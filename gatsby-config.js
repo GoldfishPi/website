@@ -23,8 +23,40 @@ module.exports = {
                 path: `${__dirname}/src/posts`
             }
         },
-        `gatsby-transformer-remark`,
         `gatsby-transformer-sharp`,
+        `gatsby-plugin-sharp`,
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            // It's important to specify the maxWidth (in pixels) of
+                            // the content container as this plugin uses this as the
+                            // base for generating different widths of each image.
+                            maxWidth: 590,
+                        },
+                    },
+                    {
+                        resolve: `gatsby-remark-embed-video`,
+                        options: {
+                            width: 800,
+                            ratio: 1.77, 
+                            height: 400, 
+                            related: false,
+                            noIframeBorder: true,
+                            customTransformers: [
+                                // Your custom transformers
+                            ],
+                            services: {
+                                // The service-specific options by the name of the service
+                            },
+                        },
+                    }
+                ],
+            },
+        },
         `gatsby-plugin-sharp`,
         {
             resolve: `gatsby-plugin-manifest`,

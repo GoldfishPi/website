@@ -17,7 +17,10 @@ exports.createPages = async ({actions, graphql}) => {
                     node {
                         frontmatter {
                             path
+                            title
+                            date
                         }
+                        html
                     }
                 }
             }
@@ -25,9 +28,15 @@ exports.createPages = async ({actions, graphql}) => {
     `)
     console.log('query lol', queryResults)
     queryResults.data.allPosts.edges.forEach(({ node }) => {
+        console.log('node lol', node);
         createPage({
             path:`/blog${node.frontmatter.path}`,
-            component:blogPostTemplate
+            component:blogPostTemplate,
+            context: {
+                title:node.frontmatter.title,
+                date:node.frontmatter.date,
+                html:node.html
+            }
         })
     });
 }

@@ -13,6 +13,9 @@ const GlobalStyles = createGlobalStyle`
         --shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 
         --padding:1rem;
+        --padding-05:.5rem;
+
+        --screen-sm:800px;
     }
     body {
         color: var(--text);
@@ -21,6 +24,11 @@ const GlobalStyles = createGlobalStyle`
         font-weight: 400;
         line-height: 1.5em;
         -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+        text-decoration:none;
+        color:var(--text);
     }
 `
 

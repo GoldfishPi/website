@@ -3,7 +3,6 @@ import { Link, useStaticQuery, graphql, PageProps } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
-import Logo from "../components/logo"
 import SEO from "../components/seo"
 import Card from '../components/card';
 
@@ -11,30 +10,29 @@ import Card from '../components/card';
 const PostsStyles = styled.div`
     flex-grow:1;
     display:grid;
-    padding:var(--padding);
     grid-template-columns:1fr;
-    a {
-        text-decoration:none;
-        color:var(--text);
-    }
 `
 
 const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
-    console.log('pages??', data);
+    console.log('data lol', data);
     return (
         <Layout>
             <SEO title="Home" />
             <PostsStyles>
                 {data.allPages.edges.map((page:any) => (                
-                <Link 
-                    to={`blog${page.node.frontmatter.path}`}
+                <div
                     key={page.node.frontmatter.path}
                 >
-                    <Card
+                    <Link 
+                        to={`blog${page.node.frontmatter.path}`}
                     >
-                        { page.node.frontmatter.title }
-                    </Card>
-                </Link>
+                        <Card
+                        >
+                            <h2>{ page.node.frontmatter.title }</h2>
+                            <p>{page.node.excerpt}</p>
+                        </Card>
+                    </Link>
+                </div>
                 ))}
             </PostsStyles>
         </Layout>
@@ -46,6 +44,7 @@ export const query = graphql`
             allPages:allMarkdownRemark {
                 edges {
                     node {
+                        excerpt
                         frontmatter {
                             title
                             path

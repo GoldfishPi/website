@@ -16,21 +16,22 @@ const Main = styled.main`
   flex-grow: 1;
   display: flex;
   position: relative;
+  padding:var(--padding);
 `
 
 const Layout = ({ children }: LayoutProps) => (
-  <AppContainer>
-    <Normalize />
-    <GlobalStyles />
-    <Header />
-    <Main>{children}</Main>
+    <AppContainer>
+        <Normalize />
+        <GlobalStyles />
+        <Header />
+        <Main>{children}</Main>
 
-    <Footer />
-  </AppContainer>
+        <Footer />
+    </AppContainer>
 )
 
 interface LayoutProps {
-  children: React.ReactNode
+    children: React.ReactNode
 }
 
 export default Layout
