@@ -1,47 +1,59 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, useStaticQuery, graphql, PageProps } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
 import Logo from "../components/logo"
 import SEO from "../components/seo"
+import Card from '../components/card';
 
-const LogoContainer = styled.div`
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  min-height: 100%;
 
-  > div {
-    max-width: 400px;
-    text-align: center;
-    padding: 20px;
-  }
-
-  a {
-    display: block;
-    max-width: 200px;
-    margin: 0 auto;
-  }
+const PostsStyles = styled.div`
+    flex-grow:1;
+    display:grid;
+    padding:var(--padding);
+    grid-template-columns:1fr;
+    a {
+        text-decoration:none;
+        color:var(--text);
+    }
 `
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
+const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
+    console.log('pages??', data);
+    return (
+        <Layout>
+            <SEO title="Home" />
+            <PostsStyles>
+                {data.allPages.edges.map((page:any) => (                
+                <Link 
+                    to={`blog${page.node.frontmatter.path}`}
+                    key={page.node.frontmatter.path}
+                >
+                    <Card
+                    >
+                        { page.node.frontmatter.title }
+                    </Card>
+                </Link>
+                ))}
+            </PostsStyles>
+        </Layout>
+    )
+}
 
-    <LogoContainer>
-      <div>
-        <Link to="/">
-          <Logo />
-        </Link>
-
-        <p>
-          Edit <code>src/pages/index.tsx</code> and save to reload.
-        </p>
-      </div>
-    </LogoContainer>
-  </Layout>
-)
+export const query = graphql`
+        {
+            allPages:allMarkdownRemark {
+                edges {
+                    node {
+                        frontmatter {
+                            title
+                            path
+                        }
+                    }
+                }
+            }
+        }
+    `
 
 export default IndexPage

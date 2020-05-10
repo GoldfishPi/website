@@ -5,3 +5,29 @@
  */
 
 // You can delete this file if you're not using it
+const path = require('path');
+exports.createPages = async ({actions, graphql}) => {
+    const { createPage } = actions;
+    const blogPostTemplate = path.resolve('src/templates/blogPost.tsx')
+
+    const queryResults = await graphql(`
+        query AllPages {
+            allPosts:allMarkdownRemark {
+                edges {
+                    node {
+                        frontmatter {
+                            path
+                        }
+                    }
+                }
+            }
+        }
+    `)
+    console.log('query lol', queryResults)
+    queryResults.data.allPosts.edges.forEach(({ node }) => {
+        createPage({
+            path:`/blog${node.frontmatter.path}`,
+            component:blogPostTemplate
+        })
+    });
+}

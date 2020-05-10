@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 import GlobalStyles from "./global-styles"
 import Footer from "./footer"
+import Header from "./header"
 
 const AppContainer = styled.div`
   display: flex;
@@ -21,7 +22,7 @@ const Layout = ({ children }: LayoutProps) => (
   <AppContainer>
     <Normalize />
     <GlobalStyles />
-
+    <Header />
     <Main>{children}</Main>
 
     <Footer />
