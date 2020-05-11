@@ -113,6 +113,28 @@ const LinesSvg = () => {
     )
 }
 
+const SquareSvg = () => {
+    const [on, toggle] = useState(false);
+    const spring = useSpring({
+        size:on ? 50 : 10,
+        pos: on ? 50 : 90,
+    })
+
+    return (
+        <div
+            onMouseOver={() => toggle(true)}
+            onMouseLeave={() => toggle(false)}
+        >
+            <svg width="100" height="100">
+                <animated.rect x="0" width={spring.size} height={spring.size} fill="var(--blue)"/>
+                <animated.rect x={spring.pos} width={spring.size} height={spring.size} fill="var(--yellow)"/>
+                <animated.rect x={spring.pos} y={spring.pos} width={spring.size} height={spring.size} fill="var(--red)"/>
+                <animated.rect x="0" y={spring.pos} width={spring.size} height={spring.size} fill="var(--green)"/>
+            </svg>
+        </div>
+    )
+}
+
 const Logo:FC<LogoProps> = ({}) => {
 
 
@@ -120,12 +142,7 @@ const Logo:FC<LogoProps> = ({}) => {
         <div style={{ display:'flex', flexWrap:'wrap', justifyContent:'space-between', width:700 }}>
             <CircleSvg />
             <LinesSvg />
-            <svg width="100" height="100">
-                <rect x="0" width="50" height="50" fill="var(--blue)"/>
-                <rect x="50" width="50" height="50" fill="var(--yellow)"/>
-                <rect x="50" y="50" width="50" height="50" fill="var(--red)"/>
-                <rect x="0" y="50" width="50" height="50" fill="var(--green)"/>
-            </svg>
+            <SquareSvg />
             <svg width="100" height="100" style={{ transform:'rotate(45deg)', borderRadius:'var(--corner)' }}>
                 <rect x="0" width="50" height="50" fill="var(--blue)"/>
                 <rect x="50" width="50" height="50" fill="var(--yellow)"/>
