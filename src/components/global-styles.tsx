@@ -7,7 +7,12 @@ const GlobalStyles = createGlobalStyle`
         --content:#353940;
         --text:#dcdfe4;
 
-        --primary:#7cb7e1;
+        --blue:#7cb7e1;
+        --green:#71f79f;
+        --red:#ed254e;
+        --yellow:#f9dc5c;
+
+        --primary:var(--blue);
 
         --corner:5px;
         --shadow:0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
