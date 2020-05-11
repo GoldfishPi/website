@@ -4,84 +4,47 @@ import { useSpring, animated } from 'react-spring';
 interface LogoProps {
 }
 
-const CircleSvg = () => {
-    const circleRadius = 10;
+interface CircleSvgProps {
+    ref:any;
+}
+const CircleSvg:FC<CircleSvgProps> = ({ref}) => {
 
     const [on, toggle] = useState(false);
 
-    const [blueX, setBlueX] = useState(10);
-    const [blueY, setBlueY] = useState(50);
-    const blueSpring = useSpring({
-        x:blueX,
-        y:blueY
-    });
-
-    const [yellowX, setYellowX] = useState(35);
-    const [yellowY, setYellowY] = useState(50);
-    const yellowSpring = useSpring({
-        x:yellowX,
-        y:yellowY
-    });
-
-    const [redX, setRedX] = useState(60);
-    const [redY, setRedY] = useState(50);
-    const redSpring = useSpring({
-        x:redX,
-        y:redY
-    });
-
-    const [greenX, setGreenX] = useState(85);
-    const [greenY, setGreenY] = useState(50);
-    const greenSpring = useSpring({
-        x:greenX,
-        y:greenY
-    });
-
+    const initY = 50;
     const spring = useSpring({
-        radius: on ? 5 : 10
+        radius: on ? 5 : 10,
+
+        blueX: on ? 10 : 10,
+        blueY: on ? 10 : initY,
+
+        yellowX: on ? 90 : 35,
+        yellowY: on ? 10 : initY,
+
+        redX: on ? 90 : 60,
+        redY: on ? 90 : initY,
+
+        greenX: on ? 10 : 85,
+        greenY: on ? 90 : initY,
+
+        ref
     })
     
 
     return (
         <div
-            onMouseOver={() => {
-                toggle(true);
-                setBlueX(10);
-                setBlueY(10);
+            onMouseOver={() => toggle(true)}
 
-                setYellowX(90);
-                setYellowY(10);
-
-                setRedX(90);
-                setRedY(90);
-
-                setGreenX(10);
-                setGreenY(90);
-            }}
-
-            onMouseLeave={() => {
-                toggle(false);
-                setBlueX(10);
-                setBlueY(50);
-
-                setYellowX(35);
-                setYellowY(50);
-
-                setRedX(60);
-                setRedY(50);
-
-                setGreenX(85);
-                setGreenY(50);
-            }}
+            onMouseLeave={() => toggle(false)}
         >
             <svg 
                 width="100" 
                 height="100"
             >
-                <animated.circle cx={blueSpring.x} cy={blueSpring.y} r={spring.radius} strokeWidth="3" fill="var(--blue)"/>
-                <animated.circle  cx={yellowSpring.x} cy={yellowSpring.y} r={spring.radius} strokeWidth="3" fill="var(--yellow)"/>
-                <animated.circle  cx={redSpring.x} cy={redSpring.y} r={spring.radius} strokeWidth="3" fill="var(--red)"/>
-                <animated.circle  cx={greenSpring.x} cy={greenSpring.y} r={spring.radius} strokeWidth="3" fill="var(--green)"/>
+                <animated.circle cx={spring.blueX} cy={spring.blueY} r={spring.radius} strokeWidth="3" fill="var(--blue)"/>
+                <animated.circle  cx={spring.yellowX} cy={spring.yellowY} r={spring.radius} strokeWidth="3" fill="var(--yellow)"/>
+                <animated.circle  cx={spring.redX} cy={spring.redY} r={spring.radius} strokeWidth="3" fill="var(--red)"/>
+                <animated.circle  cx={spring.greenX} cy={spring.greenY} r={spring.radius} strokeWidth="3" fill="var(--green)"/>
             </svg>
         </div>
     )
@@ -167,10 +130,10 @@ const SquareRotateSvg = () => {
 
 const Logo:FC<LogoProps> = ({}) => {
 
-
+    const circleRef = useRef();
     return (
         <div style={{ display:'flex', flexWrap:'wrap', justifyContent:'space-between', width:700 }}>
-            <CircleSvg />
+            <CircleSvg ref={circleRef}/>
             <LinesSvg />
             <SquareSvg />
             <SquareRotateSvg />
