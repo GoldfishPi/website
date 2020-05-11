@@ -121,13 +121,11 @@ const RotateAnimation = React.forwardRef<any, any>(({on, children}, ref:any) => 
     const spring = useSpring({
 
         from: {
-            transform:'rotate(0deg)',
+            transform:'rotate(0deg) scale(0)',
             borderRadius:'5px',
-            scale:'1'
         },
-        transform:`rotate(${on ? 45 : 0}deg)`,
+        transform:`rotate(${on ? 45 : 0}deg) scale(${on ? '0.7' : '1'})`,
         borderRadius:on ? '10px' : '0px',
-        scale:on ?'0.7' : '1',
 
         overflow:'hidden',
         height:100,
