@@ -4,13 +4,26 @@ import { useSpring, useChain, animated } from 'react-spring';
 interface LogoProps {
 }
 
-interface CircleSvgProps {
-    on:boolean;
-}
-const CircleSvg = React.forwardRef<any, any>(({on}:CircleSvgProps, ref:any) => {
+const CircleSvg = React.forwardRef<any, any>(({ on }, ref:any) => {
 
     const initY = 50;
     const spring = useSpring({
+        from: {
+            radius:10,
+
+            blueX:10,
+            blueY:initY,
+
+            yellowX: 10,
+            yellowY:initY,
+
+            redX:60,
+            redY:initY,
+
+            greenX:85,
+            greenY:initY
+
+        },
         radius: on ? 5 : 10,
 
         blueX: on ? 10 : 10,
@@ -44,41 +57,50 @@ const CircleSvg = React.forwardRef<any, any>(({on}:CircleSvgProps, ref:any) => {
     )
 });
 
-const LinesSvg = React.forwardRef<any, {on:boolean}>(({on}, ref:any) => {
+const LinesSvg = React.forwardRef<any,any>(({on}:any, ref:any) => {
     const spring = useSpring({
+        from: {
+            positive:10,
+            negative:90,
+            opacity:0,
+        },
         positive: on ? 90 : 10,
         negative: on ? 10 : 90,
+
+        opacity: 1,
+
         ref
     })
 
-    useEffect(() => {
-        console.log('change??', on);
-    }, [on])
-    
     return (
-        <div>
+        <animated.div style={{ opacity:spring.opacity }}>
             <svg width="100" height="100">
                 <animated.line x1="0" y1="5" x2={spring.positive} y2="5" stroke="var(--blue)" strokeWidth="10"/>
                 <animated.line x1="95" y1={spring.positive} x2="95" y2="0" stroke="var(--yellow)" strokeWidth="10"/>
                 <animated.line x1={spring.negative} y1="95" x2="100" y2="95" stroke="var(--red)" strokeWidth="10"/>
                 <animated.line x1="5" y1={spring.negative} x2="5" y2="100" stroke="var(--green)" strokeWidth="10"/>
             </svg>
-        </div>
+        </animated.div>
     )
 });
 
-const SquareSvg = () => {
-    const [on, toggle] = useState(false);
+const SquareSvg = React.forwardRef<any, any>(({on}:any, ref:any) => {
     const spring = useSpring({
+
+        from: {
+            size:10,
+            pos:90
+        },
+
         size:on ? 50 : 10,
         pos: on ? 50 : 90,
-    })
+
+
+        ref
+    });
 
     return (
-        <div
-            onMouseOver={() => toggle(true)}
-            onMouseLeave={() => toggle(false)}
-        >
+        <div>
             <svg width="100" height="100">
                 <animated.rect x="0" width={spring.size} height={spring.size} fill="var(--blue)"/>
                 <animated.rect x={spring.pos} width={spring.size} height={spring.size} fill="var(--yellow)"/>
@@ -87,37 +109,46 @@ const SquareSvg = () => {
             </svg>
         </div>
     )
-}
+})
 
-const SquareRotateSvg = () => {
-    const [on, toggle] = useState(false);
+const SquareRotateSvg = React.forwardRef<any, any>(({on}, ref:any) => {
     const spring = useSpring({
+
+        from: {
+            transform:'rotate(0deg)',
+            borderRadius:'5px',
+            scale:'1'
+        },
         transform:`rotate(${on ? 45 : 0}deg)`,
         borderRadius:on ? '5px' : '0px',
-        scale:on ?'0.7' : '1'
+        scale:on ?'0.7' : '1',
+
+        opacity: 1,
+
+        ref
     });
     return (
-        <div
-            onMouseOver={() => toggle(true)}
-            onMouseLeave={() => toggle(false)}
-        >
+        <animated.div style={{ opacity: spring.opacity }}>
             <animated.svg width="100" height="100" style={spring}>
                 <rect x="0" width="50" height="50" fill="var(--blue)"/>
                 <rect x="50" width="50" height="50" fill="var(--yellow)"/>
                 <rect x="50" y="50" width="50" height="50" fill="var(--red)"/>
                 <rect x="0" y="50" width="50" height="50" fill="var(--green)"/>
             </animated.svg>
-        </div>
+        </animated.div>
     );
-}
+});
 
 const Logo:FC<LogoProps> = ({}) => {
 
     const [on, toggle] = useState(false);
-    const circleRef = useRef<any>();
-    const lineRef = useRef<any>();
 
-    useChain(on ? [circleRef, lineRef] : [lineRef, circleRef])
+    const circleRef = useRef<any>({});
+    const lineRef = useRef<any>();
+    const squareRef = useRef<any>();
+    const rotateRef = useRef<any>();
+
+    useChain(on ? [circleRef, lineRef, squareRef, rotateRef] : [rotateRef, squareRef, lineRef, circleRef])
     return (
         <div style={{ display:'flex', flexWrap:'wrap', justifyContent:'space-between', width:700 }}
             onMouseOver={() => toggle(true)}
@@ -131,8 +162,14 @@ const Logo:FC<LogoProps> = ({}) => {
                 ref={lineRef}
                 on={on}
             />
-            <SquareSvg />
-            <SquareRotateSvg />
+            <SquareSvg 
+                ref={squareRef}
+                on={on}
+            />
+            <SquareRotateSvg 
+                ref={rotateRef}
+                on={on}
+            />
         </div>
     );
 };
