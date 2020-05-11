@@ -147,7 +147,8 @@ const RotateAnimation = React.forwardRef<any, any>(({on, children}, ref:any) => 
 const TextHeader = React.forwardRef<any, any>(({on}, ref:any) => {
     const spring = useSpring({
         from: {
-            transform:'translate3d(-150%, 0, 0)'
+            transform:'translate3d(-150%, 0, 0)',
+            padding:'var(--padding)'
         },
         transform: on ? 'translate3d(0%, 0, 0)' : 'translate3d(-150%, 0, 0)',
         ref
@@ -178,10 +179,7 @@ const Logo:FC<LogoProps> = ({}) => {
 
     useChain(on ? [circleRef, lineRef, squareRef, rotateRef, textRef] : [textRef, rotateRef, squareRef, lineRef, circleRef])
     return (
-        <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', width:700 }}
-            onMouseOver={() => toggle(true)}
-            onMouseLeave={() => toggle(false)}
-        >
+        <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', padding:'var(--padding)'}}>
             <RotateAnimation 
                 ref={rotateRef}
                 on={on}
