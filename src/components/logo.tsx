@@ -177,7 +177,7 @@ const Logo:FC<LogoProps> = ({}) => {
 
     useChain(on ? [circleRef, lineRef, squareRef, rotateRef, textRef] : [textRef, rotateRef, squareRef, lineRef, circleRef])
     return (
-        <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', padding:'var(--padding)'}}>
+        <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', padding:'var(--padding)', minHeight:150}}>
             <RotateAnimation 
                 ref={rotateRef}
                 on={on}
