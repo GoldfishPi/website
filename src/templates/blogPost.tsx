@@ -30,8 +30,14 @@ const Styles = styled.div`
             color:var(--primary);
         }
     }
-
+    
     @media screen and (max-width:800px) {
+        .__layout {
+            grid-template-columns:1fr 4fr 1fr;
+        }
+    }
+
+    @media screen and (max-width:600px) {
         .__layout {
             grid-template-columns:1fr;
         }
