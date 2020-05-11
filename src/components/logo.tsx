@@ -14,36 +14,40 @@ const CircleSvg = React.forwardRef<any, any>(({ on }, ref:any) => {
             blueX:10,
             blueY:initY,
 
-            yellowX: 10,
+            yellowX: 35,
             yellowY:initY,
 
             redX:60,
             redY:initY,
 
             greenX:85,
-            greenY:initY
+            greenY:initY,
+
+            opacity: 1,
 
         },
+
+        opacity: 1,
         radius: on ? 5 : 10,
 
-        blueX: on ? 10 : 10,
-        blueY: on ? 10 : initY,
+        blueX: on ? 5 : 10,
+        blueY: on ? 5 : initY,
 
-        yellowX: on ? 90 : 35,
-        yellowY: on ? 10 : initY,
+        yellowX: on ? 95 : 35,
+        yellowY: on ? 5 : initY,
 
-        redX: on ? 90 : 60,
-        redY: on ? 90 : initY,
+        redX: on ? 95 : 60,
+        redY: on ? 95 : initY,
 
-        greenX: on ? 10 : 85,
-        greenY: on ? 90 : initY,
+        greenX: on ? 5 : 85,
+        greenY: on ? 95 : initY,
 
         ref
     })
     
 
     return (
-        <div>
+        <animated.div style={{ opacity:spring.opacity }}>
             <svg 
                 width="100" 
                 height="100"
@@ -53,7 +57,7 @@ const CircleSvg = React.forwardRef<any, any>(({ on }, ref:any) => {
                 <animated.circle  cx={spring.redX} cy={spring.redY} r={spring.radius} strokeWidth="3" fill="var(--red)"/>
                 <animated.circle  cx={spring.greenX} cy={spring.greenY} r={spring.radius} strokeWidth="3" fill="var(--green)"/>
             </svg>
-        </div>
+        </animated.div>
     )
 });
 
@@ -67,7 +71,7 @@ const LinesSvg = React.forwardRef<any,any>(({on}:any, ref:any) => {
         positive: on ? 90 : 10,
         negative: on ? 10 : 90,
 
-        opacity: 1,
+        opacity: on ? 1 : 0,
 
         ref
     })
@@ -89,29 +93,31 @@ const SquareSvg = React.forwardRef<any, any>(({on}:any, ref:any) => {
 
         from: {
             size:10,
-            pos:90
+            pos:90,
+            opacity: 0,
         },
 
         size:on ? 50 : 10,
         pos: on ? 50 : 90,
 
+        opacity: on ? 1 : 0,
 
         ref
     });
 
     return (
-        <div>
+        <animated.div style={{ opacity: spring.opacity }}>
             <svg width="100" height="100">
                 <animated.rect x="0" width={spring.size} height={spring.size} fill="var(--blue)"/>
                 <animated.rect x={spring.pos} width={spring.size} height={spring.size} fill="var(--yellow)"/>
                 <animated.rect x={spring.pos} y={spring.pos} width={spring.size} height={spring.size} fill="var(--red)"/>
                 <animated.rect x="0" y={spring.pos} width={spring.size} height={spring.size} fill="var(--green)"/>
             </svg>
-        </div>
+        </animated.div>
     )
 })
 
-const SquareRotateSvg = React.forwardRef<any, any>(({on}, ref:any) => {
+const RotateAnimation = React.forwardRef<any, any>(({on, children}, ref:any) => {
     const spring = useSpring({
 
         from: {
@@ -120,23 +126,40 @@ const SquareRotateSvg = React.forwardRef<any, any>(({on}, ref:any) => {
             scale:'1'
         },
         transform:`rotate(${on ? 45 : 0}deg)`,
-        borderRadius:on ? '5px' : '0px',
+        borderRadius:on ? '10px' : '0px',
         scale:on ?'0.7' : '1',
+
+        overflow:'hidden',
+        height:100,
+        width:100,
 
         opacity: 1,
 
         ref
     });
     return (
-        <animated.div style={{ opacity: spring.opacity }}>
-            <animated.svg width="100" height="100" style={spring}>
-                <rect x="0" width="50" height="50" fill="var(--blue)"/>
-                <rect x="50" width="50" height="50" fill="var(--yellow)"/>
-                <rect x="50" y="50" width="50" height="50" fill="var(--red)"/>
-                <rect x="0" y="50" width="50" height="50" fill="var(--green)"/>
-            </animated.svg>
+        <animated.div style={ spring }>
+            { children }
         </animated.div>
     );
+});
+
+const TextHeader = React.forwardRef<any, any>(({on}, ref:any) => {
+    const spring = useSpring({
+        from: {
+            transform:'translate3d(-150%, 0, 0)'
+        },
+        transform: on ? 'translate3d(0%, 0, 0)' : 'translate3d(-150%, 0, 0)',
+        ref
+    });
+
+    return (
+        <div style={{ overflow:'hidden' }}>
+            <animated.h2 style={ spring }>
+                Erik Badger
+            </animated.h2>
+        </div>
+    )
 });
 
 const Logo:FC<LogoProps> = ({}) => {
@@ -147,29 +170,44 @@ const Logo:FC<LogoProps> = ({}) => {
     const lineRef = useRef<any>();
     const squareRef = useRef<any>();
     const rotateRef = useRef<any>();
+    const textRef = useRef<any>();
 
-    useChain(on ? [circleRef, lineRef, squareRef, rotateRef] : [rotateRef, squareRef, lineRef, circleRef])
+    useEffect(() => {
+        setTimeout(() => toggle(true), 1500);
+    }, []);
+
+    useChain(on ? [circleRef, lineRef, squareRef, rotateRef, textRef] : [textRef, rotateRef, squareRef, lineRef, circleRef])
     return (
-        <div style={{ display:'flex', flexWrap:'wrap', justifyContent:'space-between', width:700 }}
+        <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', width:700 }}
             onMouseOver={() => toggle(true)}
             onMouseLeave={() => toggle(false)}
         >
-            <CircleSvg 
-                ref={circleRef}
-                on={on}
-            />
-            <LinesSvg
-                ref={lineRef}
-                on={on}
-            />
-            <SquareSvg 
-                ref={squareRef}
-                on={on}
-            />
-            <SquareRotateSvg 
+            <RotateAnimation 
                 ref={rotateRef}
                 on={on}
-            />
+            >
+                <div style={{ display:'grid' }}>
+                    <div style={{ gridRow:1, gridColumn:1 }}>
+                        <CircleSvg 
+                            ref={circleRef}
+                            on={on}
+                        />
+                    </div>
+                    <div style={{ gridRow:1, gridColumn:1}}>
+                        <LinesSvg
+                            ref={lineRef}
+                            on={on}
+                        />
+                    </div>
+                    <div style={{ gridRow:1, gridColumn:1}}>
+                        <SquareSvg 
+                            ref={squareRef}
+                            on={on}
+                        />
+                    </div>
+                </div>
+            </RotateAnimation>
+            <TextHeader ref={textRef} on={on} />
         </div>
     );
 };
