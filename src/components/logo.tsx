@@ -80,13 +80,34 @@ const CircleSvg = () => {
 }
 
 const LinesSvg = () => {
+    const initPositive = 10;
+    const [positive, setPositive] = useState(initPositive);
+    const positiveSpring = useSpring({
+        value:positive
+    })
+
+    const initNegative = 90;
+    const [ negative, setNegative ] = useState(initNegative);
+    const negativeSpring = useSpring({
+        value:negative
+    });
+    
     return (
-        <div>
+        <div
+            onMouseOver={() => {
+                setPositive(90);
+                setNegative(10);
+            }}
+            onMouseLeave={() => {
+                setPositive(initPositive);
+                setNegative(initNegative);
+            }}
+        >
             <svg width="100" height="100">
-                <line x1="95" y1="95" x2="95" y2="0" stroke="var(--yellow)" strokeWidth="10"/>
-                <line x1="0" y1="95" x2="100" y2="95" stroke="var(--red)" strokeWidth="10"/>
-                <line x1="5" y1="5" x2="100" y2="5" stroke="var(--blue)" strokeWidth="10"/>
-                <line x1="5" y1="0" x2="5" y2="100" stroke="var(--green)" strokeWidth="10"/>
+                <animated.line x1="0" y1="5" x2={positiveSpring.value} y2="5" stroke="var(--blue)" strokeWidth="10"/>
+                <animated.line x1="95" y1={positiveSpring.value} x2="95" y2="0" stroke="var(--yellow)" strokeWidth="10"/>
+                <animated.line x1={negativeSpring.value} y1="95" x2="100" y2="95" stroke="var(--red)" strokeWidth="10"/>
+                <animated.line x1="5" y1={negativeSpring.value} x2="5" y2="100" stroke="var(--green)" strokeWidth="10"/>
             </svg>
         </div>
     )
