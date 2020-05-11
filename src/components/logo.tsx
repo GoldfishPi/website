@@ -7,6 +7,8 @@ interface LogoProps {
 const CircleSvg = () => {
     const circleRadius = 10;
 
+    const [on, toggle] = useState(false);
+
     const [blueX, setBlueX] = useState(10);
     const [blueY, setBlueY] = useState(50);
     const blueSpring = useSpring({
@@ -34,11 +36,16 @@ const CircleSvg = () => {
         x:greenX,
         y:greenY
     });
+
+    const spring = useSpring({
+        radius: on ? 5 : 10
+    })
     
 
     return (
         <div
             onMouseOver={() => {
+                toggle(true);
                 setBlueX(10);
                 setBlueY(10);
 
@@ -53,6 +60,7 @@ const CircleSvg = () => {
             }}
 
             onMouseLeave={() => {
+                toggle(false);
                 setBlueX(10);
                 setBlueY(50);
 
@@ -70,10 +78,10 @@ const CircleSvg = () => {
                 width="100" 
                 height="100"
             >
-                <animated.circle cx={blueSpring.x} cy={blueSpring.y} r={circleRadius} strokeWidth="3" fill="var(--blue)"/>
-                <animated.circle  cx={yellowSpring.x} cy={yellowSpring.y} r={circleRadius} strokeWidth="3" fill="var(--yellow)"/>
-                <animated.circle  cx={redSpring.x} cy={redSpring.y} r={circleRadius} strokeWidth="3" fill="var(--red)"/>
-                <animated.circle  cx={greenSpring.x} cy={greenSpring.y} r={circleRadius} strokeWidth="3" fill="var(--green)"/>
+                <animated.circle cx={blueSpring.x} cy={blueSpring.y} r={spring.radius} strokeWidth="3" fill="var(--blue)"/>
+                <animated.circle  cx={yellowSpring.x} cy={yellowSpring.y} r={spring.radius} strokeWidth="3" fill="var(--yellow)"/>
+                <animated.circle  cx={redSpring.x} cy={redSpring.y} r={spring.radius} strokeWidth="3" fill="var(--red)"/>
+                <animated.circle  cx={greenSpring.x} cy={greenSpring.y} r={spring.radius} strokeWidth="3" fill="var(--green)"/>
             </svg>
         </div>
     )
@@ -135,6 +143,28 @@ const SquareSvg = () => {
     )
 }
 
+const SquareRotateSvg = () => {
+    const [on, toggle] = useState(false);
+    const spring = useSpring({
+        transform:`rotate(${on ? 45 : 0}deg)`,
+        borderRadius:on ? '5px' : '0px',
+        scale:on ?'0.7' : '1'
+    });
+    return (
+        <div
+            onMouseOver={() => toggle(true)}
+            onMouseLeave={() => toggle(false)}
+        >
+            <animated.svg width="100" height="100" style={spring}>
+                <rect x="0" width="50" height="50" fill="var(--blue)"/>
+                <rect x="50" width="50" height="50" fill="var(--yellow)"/>
+                <rect x="50" y="50" width="50" height="50" fill="var(--red)"/>
+                <rect x="0" y="50" width="50" height="50" fill="var(--green)"/>
+            </animated.svg>
+        </div>
+    );
+}
+
 const Logo:FC<LogoProps> = ({}) => {
 
 
@@ -143,12 +173,7 @@ const Logo:FC<LogoProps> = ({}) => {
             <CircleSvg />
             <LinesSvg />
             <SquareSvg />
-            <svg width="100" height="100" style={{ transform:'rotate(45deg)', borderRadius:'var(--corner)' }}>
-                <rect x="0" width="50" height="50" fill="var(--blue)"/>
-                <rect x="50" width="50" height="50" fill="var(--yellow)"/>
-                <rect x="50" y="50" width="50" height="50" fill="var(--red)"/>
-                <rect x="0" y="50" width="50" height="50" fill="var(--green)"/>
-            </svg>
+            <SquareRotateSvg />
         </div>
     );
 };
