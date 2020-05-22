@@ -26,9 +26,7 @@ exports.createPages = async ({actions, graphql}) => {
             }
         }
     `)
-    console.log('query lol', queryResults)
     queryResults.data.allPosts.edges.forEach(({ node }) => {
-        console.log('node lol', node);
         createPage({
             path:`/blog${node.frontmatter.path}`,
             component:blogPostTemplate,
