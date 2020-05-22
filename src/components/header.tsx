@@ -12,7 +12,7 @@ const HeaderStyles = styled.header`
     justify-content:space-between;
     align-items:center;
 
-    padding:0 var(--padding);
+    padding:0 1rem;
 
     .__badges {
         display:flex;
@@ -35,7 +35,7 @@ const HeaderStyles = styled.header`
 const Header:FC<HeaderProps> = ({}) => {
     return (
         <HeaderStyles>
-            <h2>Erik Badger</h2>
+            <h6>Erik Badger</h6>
             <div className="__badges">
                 <Link to="/">
                     <FontAwesomeIcon

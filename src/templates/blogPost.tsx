@@ -56,7 +56,7 @@ const BlogPost:FC<BlogPostProps> = ({ pageContext }) => {
                     <div className="__content">
                         <Card>
                             <h1>{pageContext.title}</h1>
-                            <h2>{pageContext.date}</h2>
+                            <h5>{pageContext.date}</h5>
                             <div 
                                 className="__body"
                                 dangerouslySetInnerHTML={{__html:pageContext.html}}

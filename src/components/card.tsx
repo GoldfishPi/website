@@ -5,10 +5,10 @@ interface CardProps {
 }
 
 const Styles = styled.div`
-    background-color:var(--content);
-    padding:var(--padding);
-    border-radius:var(--corner);
-    box-shadow:var(--shadow);
+    background-color:#353940;
+    padding:1rem;
+    border-radius:5px;
+    box-shadow:var(--shadow-00);
 `
 
 const Card:FC<CardProps> = ({ children }) => {

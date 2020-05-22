@@ -23,7 +23,6 @@ const ContentStyles = styled.div`
 `
 
 const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
-    console.log('data lol', data);
     return (
         <Layout>
             <SEO title="Home" />
@@ -39,7 +38,7 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
                         >
                             <Card
                             >
-                                <h2>{ page.node.frontmatter.title }</h2>
+                                <h5>{ page.node.frontmatter.title }</h5>
                                 <p>{page.node.excerpt}</p>
                             </Card>
                         </Link>
