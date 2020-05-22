@@ -12,7 +12,7 @@ const HeaderStyles = styled.header`
     justify-content:space-between;
     align-items:center;
 
-    padding:0 1rem;
+    padding:0 var(--padding-10);
 
     .__badges {
         display:flex;

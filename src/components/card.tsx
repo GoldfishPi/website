@@ -5,9 +5,9 @@ interface CardProps {
 }
 
 const Styles = styled.div`
-    background-color:#353940;
-    padding:1rem;
-    border-radius:5px;
+    background-color:var(--content);
+    padding:var(--padding-10);
+    border-radius:var(--corner);
     box-shadow:var(--shadow-00);
 `
 
