@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import Layout from '../components/layout';
-import Card from '../components/card';
+// import Card from '../components/card';
 import styled from 'styled-components';
+import { Card } from '@lassiebug/card';
 
 interface BlogPostProps {
     pageContext: {
@@ -54,9 +55,9 @@ const BlogPost:FC<BlogPostProps> = ({ pageContext }) => {
             <Styles>
                 <div className="__layout">
                     <div className="__content">
-                        <Card>
+                        <Card hoverable={false}>
                             <h1>{pageContext.title}</h1>
-                            <h5>{pageContext.date}</h5>
+                            <p>{pageContext.date}</p>
                             <div 
                                 className="__body"
                                 dangerouslySetInnerHTML={{__html:pageContext.html}}

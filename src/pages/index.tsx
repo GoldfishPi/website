@@ -1,10 +1,10 @@
 import React from "react"
 import { Link, useStaticQuery, graphql, PageProps } from "gatsby"
 import styled from "styled-components"
+import { Card } from '@lassiebug/card';
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Card from '../components/card';
 import Logo from "../components/logo"
 
 
@@ -37,6 +37,7 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
                             to={`blog${page.node.frontmatter.path}`}
                         >
                             <Card
+                                hoverable
                             >
                                 <h5>{ page.node.frontmatter.title }</h5>
                                 <p>{page.node.excerpt}</p>
