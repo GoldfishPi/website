@@ -35,7 +35,7 @@ const HeaderStyles = styled.header`
 const Header:FC<HeaderProps> = ({}) => {
     return (
         <HeaderStyles>
-            <h6>Erik Badger</h6>
+            <h3>Erik Badger</h3>
             <div className="__badges">
                 <Link to="/">
                     <FontAwesomeIcon

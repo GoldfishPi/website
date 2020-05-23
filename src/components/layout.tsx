@@ -2,7 +2,7 @@ import React from "react"
 import { Normalize } from "styled-normalize"
 import styled from "styled-components"
 
-import { Colors, Typeography, Shadows, Borders, Padding } from '@lassiebug/styles';
+import LassieStyles from '@lassiebug/styles';
 import Footer from "./footer"
 import Header from "./header"
 
@@ -31,11 +31,7 @@ const Layout = ({ children }: LayoutProps) => (
         <Header />
         <Main>{children}</Main>
 
-        <Colors/>
-        <Typeography/>
-        <Shadows/>
-        <Borders/>
-        <Padding/>
+        <LassieStyles/>
 
         <Footer />
     </AppContainer>

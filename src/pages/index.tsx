@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, useStaticQuery, graphql, PageProps } from "gatsby"
+import { Link, graphql, PageProps } from "gatsby"
 import styled from "styled-components"
 import { Card } from '@lassiebug/card';
 
@@ -39,7 +39,7 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
                             <Card
                                 hoverable
                             >
-                                <h5>{ page.node.frontmatter.title }</h5>
+                                <h2>{ page.node.frontmatter.title }</h2>
                                 <p>{page.node.excerpt}</p>
                             </Card>
                         </Link>
