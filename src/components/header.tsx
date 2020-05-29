@@ -30,6 +30,10 @@ const HeaderStyles = styled.header`
             padding-right:0;
         }
     }
+
+    svg {
+        max-height:20px;
+    }
 `;
 
 const Header:FC<HeaderProps> = ({}) => {
