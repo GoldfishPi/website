@@ -28,7 +28,6 @@ const Main = styled.main`
 const Layout = ({ children }: LayoutProps) => (
     <AppContainer>
         <Normalize />
-        <Header />
         <Main>{children}</Main>
 
         <LassieStyles/>
