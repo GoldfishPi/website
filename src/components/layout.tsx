@@ -29,10 +29,7 @@ const Layout = ({ children }: LayoutProps) => (
     <AppContainer>
         <Normalize />
         <Main>{children}</Main>
-
         <LassieStyles/>
-
-        <Footer />
     </AppContainer>
 )
 

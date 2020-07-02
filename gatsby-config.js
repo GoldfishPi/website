@@ -1,9 +1,9 @@
 module.exports = {
     siteMetadata: {
-        title: `Gatsby Typescript Minimal`,
-        description: `A minimal, bare bones Typescript starter for Gatsby`,
-        author: `@benbarber`,
-        siteUrl: `https://github.com/benbarber/gatsby-typescript-minimal`
+        title: `Simple Web Developer`,
+        description: ``,
+        author: `Erik Badger`,
+        siteUrl: `https://www.erikbadger.com`
     },
     plugins: [
         `gatsby-plugin-typescript`,
