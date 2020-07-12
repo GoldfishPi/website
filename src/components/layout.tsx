@@ -38,9 +38,7 @@ const Layout = ({ children }: LayoutProps) => (
                 <Header.Item><p>About</p></Header.Item>
             </Link>
             <Link to="/projects">
-                <Header.Item>
-                    <p>Projects</p>
-                </Header.Item>
+                <Header.Item><p>Projects</p></Header.Item>
             </Link>
         </Header>
         <Main>{children}</Main>

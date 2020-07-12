@@ -7,7 +7,6 @@ interface AboutPageProps {
 const AboutPage:FC<AboutPageProps> = ({}) => {
     return (
         <Layout>
-            <div>AboutPage works!</div>
         </Layout>
     );
 };

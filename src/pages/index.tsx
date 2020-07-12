@@ -14,22 +14,23 @@ const ContentStyles = styled.div`
 `;
 
 const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
+    console.log('pages', data);
     return (
         <Layout>
             <SEO title="Home" />
                 <ContentStyles>
                 {data.allPages.edges.map((page:any) => (                
                 <div
-                    key={page.node.frontmatter.path}
+                    key={page.node.markdown.frontmatter.path}
                 >
                     <Link 
-                        to={`blog${page.node.frontmatter.path}`}
+                        to={`blog${page.node.markdown.frontmatter.path}`}
                     >
                         <Card
                             hoverable
                         >
-                            <h2>{ page.node.frontmatter.title }</h2>
-                            <p>{page.node.excerpt}</p>
+                            <h2>{ page.node.markdown.frontmatter.title }</h2>
+                            <p>{page.node.markdown.excerpt}</p>
                         </Card>
                     </Link>
                 </div>
@@ -41,13 +42,18 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
 
 export const query = graphql`
         {
-            allPages:allMarkdownRemark {
+            allPages: allFile(filter: { sourceInstanceName:{ eq: "posts"}}) {
                 edges {
                     node {
-                        excerpt
-                        frontmatter {
-                            title
-                            path
+                        id
+                        relativePath
+                        markdown: childMarkdownRemark {
+                            excerpt
+                            frontmatter {
+                                title
+                                path
+                                path
+                            }
                         }
                     }
                 }
