@@ -11,29 +11,35 @@ exports.createPages = async ({actions, graphql}) => {
     const blogPostTemplate = path.resolve('src/templates/blogPost.tsx')
 
     const queryResults = await graphql(`
-        query AllPages {
-            allPosts:allMarkdownRemark {
+        {
+            allPages: allFile(filter: { sourceInstanceName:{ eq: "posts"}}) {
                 edges {
                     node {
-                        frontmatter {
-                            path
-                            title
-                            date
+                        id
+                        relativePath
+                        markdown: childMarkdownRemark {
+                            excerpt
+                            html
+                            frontmatter {
+                                title
+                                path
+                                path
+                            }
                         }
-                        html
                     }
                 }
             }
         }
+
     `)
-    queryResults.data.allPosts.edges.forEach(({ node }) => {
+    queryResults.data.allPages.edges.forEach(({ node }) => {
         createPage({
-            path:`/blog${node.frontmatter.path}`,
+            path:`/blog${node.markdown.frontmatter.path}`,
             component:blogPostTemplate,
             context: {
-                title:node.frontmatter.title,
-                date:node.frontmatter.date,
-                html:node.html
+                title:node.markdown.frontmatter.title,
+                date:node.markdown.frontmatter.date,
+                html:node.markdown.html
             }
         })
     });
