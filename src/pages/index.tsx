@@ -14,7 +14,6 @@ const ContentStyles = styled.div`
 `;
 
 const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
-    console.log('pages', data);
     return (
         <Layout>
             <SEO title="Home" />
