@@ -24,11 +24,7 @@ const Main = styled.main`
   flex-grow: 1;
   display: flex;
   position: relative;
-  padding:var(--padding);
-`
-
-const LogoStyles = styled.div`
-    transform: scale(.5);
+  padding:var(--padding-05);
 `
 
 const Layout = ({ children }: LayoutProps) => (
@@ -40,6 +36,11 @@ const Layout = ({ children }: LayoutProps) => (
             </Link>
             <Link to="/about">
                 <Header.Item><p>About</p></Header.Item>
+            </Link>
+            <Link to="/projects">
+                <Header.Item>
+                    <p>Projects</p>
+                </Header.Item>
             </Link>
         </Header>
         <Main>{children}</Main>
