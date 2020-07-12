@@ -14,19 +14,11 @@ const Container = styled.div`
 `
 
 const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-
-    <Container>
-      <div>
-        <h1>404: Not found</h1>
-        <p>The page you were looking for could not be found.</p>
-        <p>
-          <Link to="/">Return Home</Link>
-        </p>
-      </div>
-    </Container>
-  </Layout>
+    <Layout>
+        <Layout>
+            <div></div>
+        </Layout>
+    </Layout>
 )
 
 export default NotFoundPage

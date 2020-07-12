@@ -3,8 +3,10 @@ import { Normalize } from "styled-normalize"
 import styled from "styled-components"
 
 import LassieStyles from '@lassiebug/styles';
-import Footer from "./footer"
-import Header from "./header"
+import Header from "@lassiebug/header";
+import { Link } from "gatsby";
+import Logo from "./logo";
+
 
 const AppContainer = styled.div`
   display: flex;
@@ -25,9 +27,21 @@ const Main = styled.main`
   padding:var(--padding);
 `
 
+const LogoStyles = styled.div`
+    transform: scale(.5);
+`
+
 const Layout = ({ children }: LayoutProps) => (
     <AppContainer>
         <Normalize />
+        <Header title="Erik Badger">
+            <Link to="/">
+                <Header.Item><p>Home</p></Header.Item>
+            </Link>
+            <Link to="/about">
+                <Header.Item><p>About</p></Header.Item>
+            </Link>
+        </Header>
         <Main>{children}</Main>
         <LassieStyles/>
     </AppContainer>

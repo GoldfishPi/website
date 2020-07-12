@@ -9,6 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@lassiebug/card": "^0.4.2",
+    "@lassiebug/header": "^0.6.0",
     "@lassiebug/input": "0.4.2",
     "@lassiebug/styles": "0.4.2",
     "gatsby": "^2.13.64",
