@@ -1,0 +1,39 @@
+---
+name: projects
+---
+
+import { Card } from '@lassiebug/card';
+
+<div className="__cards">
+    <Card 
+        header={() => <h2>Lassie Bug</h2>} 
+        footer={() => (
+            <div className="__footer-content">
+                <a href="https://github.com/lassiebug/lassiebug-ui">Github</a>
+            </div>
+        )}
+    >
+        <p>
+            This is the UI library I developed for my own personal projects and currently being used on this site.
+        </p>
+        <p>
+            It is written in React and designed to be completely modular so I can pull in small pieces into any project I am working in.
+        </p>
+    </Card>
+    <Card 
+        header={() => <h2>Nomad Pitstops</h2>}
+        footer={() => (
+            <div>
+                <a href="https://github.com/GoldfishPi/nomadpitstops2.0">Github</a>
+                <a href="https://nomadpitstops.com">Site</a>
+            </div>
+        )}
+    >
+        <p>
+            This was a project I built to keep track of the places I worked while I was on road.
+        </p>
+        <p>
+            The project has become become mix between a travel blog and a web app and uses Vue and Nuxt to accomplish this.
+        </p>
+    </Card>
+</div>

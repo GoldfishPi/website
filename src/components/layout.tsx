@@ -14,9 +14,10 @@ const AppContainer = styled.div`
   min-height: 100vh;
   background-color:var(--background);
   color:var(--foreground);
+  font-family:-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
   a {
       text-decoration:none;
-      color:var(--magenta);
+      color:var(--blue);
       font-weight: bold;
   }
 
