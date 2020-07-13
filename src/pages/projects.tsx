@@ -14,7 +14,7 @@ const ProjectPageStyles = styled.div`
         display: grid;
         grid-template-columns:repeat(auto-fit, minmax(400px, 1fr));
         grid-gap: var(--padding-10);
-        padding-top:var(--padding-10);
+        padding:var(--padding-10) 0;
     }
     .__card-footer a{
         &: after {
