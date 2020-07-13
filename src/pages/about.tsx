@@ -1,6 +1,14 @@
 import React, { FC } from 'react';
 import Layout from '../components/layout';
 import {graphql} from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import styled from 'styled-components';
+
+const AboutStyles = styled.div`
+    width:100%;
+    display:flex;
+    justify-content: center;
+`
 
 interface AboutPageProps {
     data:any;
@@ -9,17 +17,20 @@ interface AboutPageProps {
 const AboutPage:FC<AboutPageProps> = ({ data }) => {
     return (
         <Layout>
-            <div dangerouslySetInnerHTML={{__html:data.page.markdown.html}}></div>
+            <AboutStyles>
+                <div>
+                    <MDXRenderer>{data.page.body}</MDXRenderer>
+                </div>
+            </AboutStyles>
         </Layout>
     );
 };
 
+            // <div dangerouslySetInnerHTML={{__html:data.page.markdown.html}}></div>
 export const query = graphql`
     {
-        page: file(relativePath:{ eq: "about.md" }) {
-            markdown:childMarkdownRemark {
-                html
-            }
+        page: mdx(frontmatter: { name:{ eq: "about" } }) {
+            body
         }
     }
 `
