@@ -16,7 +16,12 @@ const AppContainer = styled.div`
   color:var(--foreground);
   a {
       text-decoration:none;
-      color:var(--foreground);
+      color:var(--magenta);
+      font-weight: bold;
+  }
+
+  p {
+      margin-bottom: var(--padding-05);
   }
 `
 
