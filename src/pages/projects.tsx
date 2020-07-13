@@ -17,7 +17,13 @@ const ProjectPageStyles = styled.div`
         padding-top:var(--padding-10);
     }
     .__card-footer a{
-        margin-right:var(--padding-05);
+        &: after {
+            margin:0 var(--padding-05);
+            content: '|';
+        }
+        &:last-child:after {
+            content:none;
+        }
     }
 `
 
