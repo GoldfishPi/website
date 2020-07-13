@@ -12,7 +12,7 @@ const ProjectPageStyles = styled.div`
     width:100%;
     .__cards {
         display: grid;
-        grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns:repeat(auto-fit, minmax(400px, 1fr));
         grid-gap: var(--padding-10);
         padding-top:var(--padding-10);
     }
