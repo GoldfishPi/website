@@ -7,6 +7,14 @@ date: 05-10-2020
 
 `video: https://youtu.be/dQw4w9WgXcQ`
 
+```javascript
+function() {
+    var x = 100;
+    const y = 50;
+    let z = 25;
+}
+```
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien faucibus et molestie ac feugiat. Nibh tellus molestie nunc non blandit massa. Mauris augue neque gravida in fermentum. Quis vel eros donec ac odio tempor orci dapibus ultrices. Justo nec ultrices dui sapien. Lorem ipsum dolor sit amet consectetur adipiscing elit. Nibh tortor id aliquet lectus proin nibh nisl condimentum. Urna cursus eget nunc scelerisque viverra. Arcu odio ut sem nulla pharetra diam sit amet nisl. Tellus molestie nunc non blandit massa enim nec. Viverra aliquet eget sit amet tellus. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl. Mattis pellentesque id nibh tortor. Facilisi nullam vehicula ipsum a arcu cursus. Diam vel quam elementum pulvinar etiam non quam lacus. Vestibulum morbi blandit cursus risus at ultrices mi tempus. Fames ac turpis egestas sed tempus urna et. Massa sapien faucibus et molestie ac feugiat sed. Velit scelerisque in dictum non consectetur a.
 
 Semper risus in hendrerit gravida rutrum quisque. Habitant morbi tristique senectus et netus et. Tempus urna et pharetra pharetra massa. Luctus accumsan tortor posuere ac ut consequat semper viverra nam. Tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Donec massa sapien faucibus et molestie. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis. Elementum integer enim neque volutpat ac tincidunt vitae. In nisl nisi scelerisque eu ultrices vitae auctor eu augue. Sed velit dignissim sodales ut. Mattis aliquam faucibus purus in massa tempor nec feugiat. Sed turpis tincidunt id aliquet risus feugiat in. Nunc pulvinar sapien et ligula ullamcorper malesuada proin libero. Ac tincidunt vitae semper quis lectus nulla. Ac placerat vestibulum lectus mauris ultrices eros in cursus turpis. Tortor id aliquet lectus proin nibh nisl condimentum id. Nunc sed augue lacus viverra vitae. Amet est placerat in egestas erat imperdiet sed euismod nisi. Pretium vulputate sapien nec sagittis aliquam. Mattis nunc sed blandit libero volutpat.
