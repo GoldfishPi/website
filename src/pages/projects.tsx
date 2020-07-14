@@ -25,6 +25,12 @@ const ProjectPageStyles = styled.div`
             content:none;
         }
     }
+
+    @media screen and (max-width:600px) {
+        .__cards {
+            grid-template-columns: 1fr;
+        }
+    }
 `
 
 const ProjectsPage:FC<ProjectsPageProps> = ({ data }) => {
