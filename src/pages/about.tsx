@@ -3,6 +3,7 @@ import Layout from '../components/layout';
 import {graphql} from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 
 const AboutStyles = styled.div`
     width:100%;
@@ -17,7 +18,11 @@ interface AboutPageProps {
 const AboutPage:FC<AboutPageProps> = ({ data }) => {
     return (
         <Layout>
+            <Helmet>
+                <title>About</title>
+            </Helmet>
             <AboutStyles>
+                {data.excerpt}
                 <div>
                     <MDXRenderer>{data.page.body}</MDXRenderer>
                 </div>

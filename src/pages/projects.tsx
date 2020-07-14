@@ -3,6 +3,7 @@ import Layout from '../components/layout';
 import {graphql} from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
+import Helmet from 'react-helmet';
 
 interface ProjectsPageProps {
     data:any;
@@ -36,6 +37,9 @@ const ProjectPageStyles = styled.div`
 const ProjectsPage:FC<ProjectsPageProps> = ({ data }) => {
     return (
         <Layout>
+            <Helmet>
+                <title>Projects</title>
+            </Helmet>
             <ProjectPageStyles>
                 <MDXRenderer>{ data.page.body }</MDXRenderer>
             </ProjectPageStyles>

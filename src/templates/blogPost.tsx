@@ -49,7 +49,7 @@ const BlogPost:FC<BlogPostProps> = ({ pageContext }) => {
     return (
         <Layout>
             <Helmet>
-                <title>{pageContext.title}</title>
+                <title>Blog | {pageContext.title}</title>
                 <meta name="description" content={pageContext.description} />
 
                 <meta property="og:type" content="Blog"/>
