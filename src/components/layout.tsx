@@ -31,6 +31,7 @@ const Main = styled.main`
   display: flex;
   position: relative;
   padding:var(--padding-05);
+  box-sizing:border-box;
 `
 
 const Layout = ({ children }: LayoutProps) => (

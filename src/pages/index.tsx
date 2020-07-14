@@ -7,10 +7,20 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const ContentStyles = styled.div`
-    flex-grow:1;
-    display:flex;
-    justify-content: center;
-    margin-top:1rem;
+    width:100%;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    .__cards {
+        width: 100%;
+    }
+
+    @media screen and (min-width:900px) {
+        grid-template-columns:1fr 3fr 1fr;
+        .__cards {
+            grid-column:2;
+        }
+    }
 `;
 
 const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
@@ -18,24 +28,21 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
         <Layout>
             <SEO title="Home" />
                 <ContentStyles>
-                {data.allPages.edges.map((page:any) => (                
-                <div
-                    key={page.node.markdown.frontmatter.path}
-                    style={{width:'45%'}}
-                >
-                    <Link 
-                        to={`blog${page.node.markdown.frontmatter.path}`}
-                    >
-                        <Card
-                            hoverable
-                            width="100%"
-                        >
-                            <h2>{ page.node.markdown.frontmatter.title }</h2>
-                            <p>{page.node.markdown.excerpt}</p>
-                        </Card>
-                    </Link>
-                </div>
-                ))}
+                    <div className="__cards">
+                        {data.allPages.edges.map((page:any) => (                
+                            <Link 
+                                to={`blog${page.node.markdown.frontmatter.path}`}
+                                key={page.node.markdown.frontmatter.path}
+                            >
+                                <Card
+                                    hoverable
+                                >
+                                    <h2>{ page.node.markdown.frontmatter.title }</h2>
+                                    <p>{page.node.markdown.excerpt}</p>
+                                </Card>
+                            </Link>
+                        ))}
+                    </div>
             </ContentStyles>
         </Layout>
     )
