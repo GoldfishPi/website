@@ -149,6 +149,7 @@ module.exports = {
                 fonts: [`Roboto`],
             },
         },
+        `gatsby-plugin-robots-txt`,
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,
