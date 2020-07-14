@@ -17,7 +17,7 @@ const ProjectPageStyles = styled.div`
         padding:var(--padding-10) 0;
     }
     .__card-footer a{
-        &: after {
+        &:after {
             margin:0 var(--padding-05);
             content: '|';
         }
