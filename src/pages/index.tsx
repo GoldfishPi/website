@@ -21,12 +21,14 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
                 {data.allPages.edges.map((page:any) => (                
                 <div
                     key={page.node.markdown.frontmatter.path}
+                    style={{width:'45%'}}
                 >
                     <Link 
                         to={`blog${page.node.markdown.frontmatter.path}`}
                     >
                         <Card
                             hoverable
+                            width="100%"
                         >
                             <h2>{ page.node.markdown.frontmatter.title }</h2>
                             <p>{page.node.markdown.excerpt}</p>
