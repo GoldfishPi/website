@@ -3,6 +3,8 @@ import Layout from '../components/layout';
 // import Card from '../components/card';
 import styled from 'styled-components';
 import { Card } from '@lassiebug/card';
+import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
+deckDeckGoHighlightElement();
 
 interface BlogPostProps {
     pageContext: {
@@ -22,16 +24,6 @@ const Styles = styled.div`
         grid-column:2;
     }
 
-    .__body {
-        code {
-            display:block;
-            background:var(--background);
-            padding:var(--padding);
-            border-radius:var(--corner);
-            color:var(--primary);
-        }
-    }
-    
     @media screen and (max-width:800px) {
         .__layout {
             grid-template-columns:1fr 4fr 1fr;
