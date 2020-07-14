@@ -26,23 +26,25 @@ const ContentStyles = styled.div`
 const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
     return (
         <Layout>
-            <SEO title="Home" />
-                <ContentStyles>
-                    <div className="__cards">
-                        {data.allPages.edges.map((page:any) => (                
-                            <Link 
-                                to={`blog${page.node.markdown.frontmatter.path}`}
-                                key={page.node.markdown.frontmatter.path}
+            <SEO title="Home | Blog Posts"/>
+            <ContentStyles>
+                <div className="__cards">
+                    <h1>Blog Posts</h1>
+                    <br/>
+                    {data.allPages.edges.map((page:any) => (                
+                        <Link 
+                            to={`blog${page.node.markdown.frontmatter.path}`}
+                            key={page.node.markdown.frontmatter.path}
+                        >
+                            <Card
+                                hoverable
                             >
-                                <Card
-                                    hoverable
-                                >
-                                    <h2>{ page.node.markdown.frontmatter.title }</h2>
-                                    <p>{page.node.markdown.excerpt}</p>
-                                </Card>
-                            </Link>
-                        ))}
-                    </div>
+                                <h2>{ page.node.markdown.frontmatter.title }</h2>
+                                <p>{page.node.markdown.excerpt}</p>
+                            </Card>
+                        </Link>
+                    ))}
+                </div>
             </ContentStyles>
         </Layout>
     )
