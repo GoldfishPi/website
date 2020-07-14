@@ -3,6 +3,9 @@ import Layout from '../components/layout';
 // import Card from '../components/card';
 import styled from 'styled-components';
 import { Card } from '@lassiebug/card';
+import Helmet from 'react-helmet';
+
+
 import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
 deckDeckGoHighlightElement();
 
@@ -11,6 +14,7 @@ interface BlogPostProps {
         title:string;
         html:string;
         date:string;
+        description:string;
     }
 }
 
@@ -44,6 +48,19 @@ const Styles = styled.div`
 const BlogPost:FC<BlogPostProps> = ({ pageContext }) => {
     return (
         <Layout>
+            <Helmet>
+                <title>{pageContext.title}</title>
+                <meta name="description" content={pageContext.description} />
+
+                <meta property="og:type" content="Blog"/>
+                <meta property="og:title" content={pageContext.title} />
+                <meta property="og:description" content={pageContext.description}/>
+                <meta property="og:site_name" content="Erik Badger"/>
+                <meta property="og:url" content="https://erikbadger.com"/>
+
+                <meta property="twitter:title" content={pageContext.title} />
+                <meta property="twitter:description" content={pageContext.description} />
+            </Helmet>
             <Styles>
                 <div className="__layout">
                     <div className="__content">

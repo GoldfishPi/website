@@ -39,7 +39,8 @@ exports.createPages = async ({actions, graphql}) => {
             context: {
                 title:node.markdown.frontmatter.title,
                 date:node.markdown.frontmatter.date,
-                html:node.markdown.html
+                html:node.markdown.html,
+                description:node.markdown.excerpt
             }
         })
     });
