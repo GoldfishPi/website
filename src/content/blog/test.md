@@ -1,9 +1,8 @@
 ---
 title: Test Blog Post
 path: "/test"
-date: 05-10-2020
+date: Jul 15 2020
 ---
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
 `video: https://youtu.be/dQw4w9WgXcQ`
 

@@ -4,7 +4,7 @@ import Layout from '../components/layout';
 import styled from 'styled-components';
 import { Card } from '@lassiebug/card';
 import Helmet from 'react-helmet';
-
+import moment from 'moment';
 
 import { defineCustomElements as deckDeckGoHighlightElement } from '@deckdeckgo/highlight-code/dist/loader';
 deckDeckGoHighlightElement();
@@ -54,6 +54,7 @@ const Styles = styled.div`
 `
 
 const BlogPost:FC<BlogPostProps> = ({ pageContext }) => {
+    console.log('date lol', pageContext.date);
     return (
         <Layout>
             <Helmet>
@@ -74,7 +75,7 @@ const BlogPost:FC<BlogPostProps> = ({ pageContext }) => {
                     <div className="__content">
                         <Card hoverable={false}>
                             <h1>{pageContext.title}</h1>
-                            <p>{pageContext.date}</p>
+                            <p>{moment(pageContext.date).format('MMMM, DD, yyyy')}</p>
                             <div 
                                 className="__body"
                                 dangerouslySetInnerHTML={{__html:pageContext.html}}
