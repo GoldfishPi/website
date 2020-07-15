@@ -28,6 +28,14 @@ const Styles = styled.div`
         grid-column:2;
     }
 
+    .__body {
+        margin:var(--padding-20);
+        p {
+            font-size:1.3rem;
+            margin-bottom:var(--padding-20);
+        }
+    }
+
     @media screen and (max-width:800px) {
         .__layout {
             grid-template-columns:1fr 4fr 1fr;
