@@ -7,16 +7,18 @@ import LoremIpsum from 'react-lorem-ipsum';
 import {Card} from "@lassiebug/card";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
+import Img from 'gatsby-image';
 
 
 const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
-    const banner:string = data.banner.childImageSharp.fluid.src;
+    const bannerData = data.banner.childImageSharp.fixed;
+    const banner:string = data.banner.childImageSharp.fixed.src;
     return (
         <Layout>
             <SEO title="Home | Blog Posts"/>
             <ContentStyles>
                 <div id="header">
-                    <img className="__bg-img" src={banner}/>
+                    <Img className="__bg-img" fixed={bannerData}/>
                     <div className="__bg-text">
                         <h1>Erik Badger</h1>
                         <h2>Simple Web Developer</h2>
@@ -70,7 +72,7 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
                     <MissionStyles>
                         <div className="__content">
                             <div className="__img-container">
-                                <img className="__banner" src={banner}/>
+                                <Img className="__banner" fluid={data.banner.childImageSharp.fluid}/>
                             </div>
                             <h2>Lorem Ipsum</h2>
                             <h3>
@@ -111,7 +113,8 @@ const MissionStyles = styled.div`
         width:100%;
     }
     .__banner {
-        max-width:100%;
+        width:100%;
+        min-height:300px;
     }
 `;
 
@@ -261,8 +264,11 @@ export const query = graphql`
             }
             banner:file(relativePath:{eq:"banner.jpg"}) {
                 childImageSharp {
+                    fixed(width:1920, height:1080) {
+                        ...GatsbyImageSharpFixed
+                    }
                     fluid(maxWidth:1920, maxHeight:1080) {
-                        src
+                        ...GatsbyImageSharpFluid
                     }
                 }
             }
