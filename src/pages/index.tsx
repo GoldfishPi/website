@@ -20,7 +20,7 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
                     <div className="__bg-text">
                         <h1>Erik Badger</h1>
                         <h2>Simple Web Developer</h2>
-                        <a href="#banner" className="__start-btn">Start</a>
+                        <a href="#banner" className="__btn-start">Start</a>
                     </div>
                 </div>
                 <div id="banner">
@@ -64,9 +64,6 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
 
                             </div>
                         </div>
-                        <a href="#mission" className="__start-btn">
-                            <FontAwesomeIcon icon={faChevronDown}/>
-                        </a>
                     </BannerStyles>
                 </div>
                 <div id="mission">
@@ -83,6 +80,11 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
                                 />
                             </h3>
                             <LoremIpsum/>
+                            <div className="__img-container">
+                                <a href="#mission" className="__btn-next">
+                                    <FontAwesomeIcon icon={faChevronDown} size="2x"/>
+                                </a>
+                            </div>
                         </div>
                     </MissionStyles>
                 </div>
@@ -153,7 +155,7 @@ const ContentStyles = styled.div`
     scroll-behavior:smooth;
 
     & > div {
-        min-height:100vh;
+        // min-height:100vh;
         display:flex;
         flex-direction:column;
     }
@@ -192,7 +194,7 @@ const ContentStyles = styled.div`
         text-align:center;
     }
 
-    .__start-btn {
+    .__btn-start {
         width:100px;
         height:100px;
 
@@ -212,6 +214,20 @@ const ContentStyles = styled.div`
         display:flex;
         justify-content:center;
         align-items:center;
+    }
+
+    .__btn-next {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        width:200px;
+
+        background-color:var(--primary);
+        color:var(--text);
+        border:none;
+
+        border-radius:var(--corner);
     }
 
     @media screen and (min-width:1400px) {
