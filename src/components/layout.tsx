@@ -30,24 +30,12 @@ const Main = styled.main`
   flex-grow: 1;
   display: flex;
   position: relative;
-  padding:var(--padding-05);
   box-sizing:border-box;
 `
 
 const Layout = ({ children }: LayoutProps) => (
     <AppContainer>
         <Normalize />
-        <Header title="Erik Badger">
-            <Link to="/">
-                <Header.Item><p>Home</p></Header.Item>
-            </Link>
-            <Link to="/about">
-                <Header.Item><p>About</p></Header.Item>
-            </Link>
-            <Link to="/projects">
-                <Header.Item><p>Projects</p></Header.Item>
-            </Link>
-        </Header>
         <Main>{children}</Main>
         <LassieStyles/>
     </AppContainer>
