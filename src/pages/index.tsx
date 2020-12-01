@@ -108,9 +108,10 @@ const MissionStyles = styled.div`
         display:flex;
         justify-content:center;
         align-items:center;
+        width:100%;
     }
     .__banner {
-        height:30em;
+        max-width:100%;
     }
 `;
 
@@ -228,6 +229,8 @@ const ContentStyles = styled.div`
         border:none;
 
         border-radius:var(--corner);
+
+        margin-top:var(--padding-10);
     }
 
     @media screen and (min-width:1400px) {
