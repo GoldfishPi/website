@@ -64,17 +64,53 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
 
                             </div>
                         </div>
-                        <a href="#section" className="__start-btn">
+                        <a href="#mission" className="__start-btn">
                             <FontAwesomeIcon icon={faChevronDown}/>
                         </a>
                     </BannerStyles>
                 </div>
-                <div id="section">
+                <div id="mission">
+                    <MissionStyles>
+                        <div className="__content">
+                            <div className="__img-container">
+                                <img className="__banner" src={banner}/>
+                            </div>
+                            <h2>Lorem Ipsum</h2>
+                            <h3>
+                                <LoremIpsum
+                                    avgWordsPerSentence={10}
+                                    avgSentencesPerParagraph={4}
+                                />
+                            </h3>
+                            <LoremIpsum/>
+                        </div>
+                    </MissionStyles>
                 </div>
             </ContentStyles>
         </Layout>
     )
 }
+
+const MissionStyles = styled.div`
+
+    display:grid;
+    grid-template-columns:1fr 12fr 1fr;
+    flex-grow:1;
+
+    padding:var(--padding-20);
+
+    .__content {
+        grid-column:2;
+    }
+    .__img-container {
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    .__banner {
+        height:30em;
+    }
+`;
 
 const BannerStyles = styled.div`
 
@@ -148,10 +184,12 @@ const ContentStyles = styled.div`
     h1 {
         padding-bottom:var(--padding-05);
         border-bottom:2px solid var(--primary);
+        text-align:center;
     }
 
     h2 {
         padding-top:var(--padding-05);
+        text-align:center;
     }
 
     .__start-btn {
