@@ -11,14 +11,13 @@ import Img from 'gatsby-image';
 
 
 const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
-    const bannerData = data.banner.childImageSharp.fixed;
     const banner:string = data.banner.childImageSharp.fixed.src;
     return (
         <Layout>
             <SEO title="Home | Blog Posts"/>
             <ContentStyles>
                 <div id="header">
-                    <Img className="__bg-img" fixed={bannerData}/>
+                    <Img className="__bg-img" fluid={data.banner.childImageSharp.fluid}/>
                     <div className="__bg-text">
                         <h1>Erik Badger</h1>
                         <h2>Simple Web Developer</h2>
@@ -175,6 +174,7 @@ const ContentStyles = styled.div`
 
     .__bg-img {
         height:100vh;
+        width:100vw;
         filter:blur(8px);
     }
 
