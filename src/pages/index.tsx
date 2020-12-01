@@ -5,6 +5,8 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import LoremIpsum from 'react-lorem-ipsum';
 import {Card} from "@lassiebug/card";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faChevronDown} from "@fortawesome/free-solid-svg-icons";
 
 
 const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
@@ -62,7 +64,9 @@ const IndexPage:React.FC<PageProps<any>> = ({ data }) => {
 
                             </div>
                         </div>
-                        <a href="#section" className="__start-btn">^</a>
+                        <a href="#section" className="__start-btn">
+                            <FontAwesomeIcon icon={faChevronDown}/>
+                        </a>
                     </BannerStyles>
                 </div>
                 <div id="section">
@@ -80,6 +84,7 @@ const BannerStyles = styled.div`
     flex-direction:column;
 
     flex-grow:1;
+    padding:var(--padding-10);
 
     .__heading {
         display:flex;
@@ -87,21 +92,23 @@ const BannerStyles = styled.div`
         align-items:center;
         flex-direction:column;
     }
+
     h2 {
         margin-bottom:var(--padding-05);
     }
+
     h3 {
         margin-bottom:var(--padding-05);
     }
+
     .__about {
-        padding:var(--padding-05);
         padding-top:0;
+        text-align:center;
     }
     .__cards {
         display:grid;
         gap:var(--padding-05);
         grid-template-columns:repeat(auto-fit, minmax(20rem, 1fr));
-        padding:var(--padding-05);
     }
 `;
 
