@@ -10,14 +10,14 @@ const iconSize = '3x';
 /**
  * @description Sidebar Component
  */
-const Sidebar: FC<SidebarProps> = ({}) => {
+const Sidebar: FC<SidebarProps> = () => {
     return (
         <Nav>
             <div className="__logo">
                 <p>EB</p>
             </div>
             <div className="__links">
-                <a href="https://github.com/GoldfishPi" target="_blank">
+                <a href="https://github.com/GoldfishPi" target="_blank" rel="noreferrer">
                     <FontAwesomeIcon icon={faGithub} size={iconSize} />
                 </a>
             </div>

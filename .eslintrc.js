@@ -11,8 +11,9 @@ module.exports = {
     },
     rules: {
         'prettier/prettier':'error',
-        "no-use-before-define": "off",
-        "@typescript-eslint/no-redeclare": ["off"],
+        'no-use-before-define': 'off',
+        'no-empty-pattern':'off',
+        '@typescript-eslint/no-redeclare': ['off'],
         '@typescript-eslint/no-use-before-define':'off',
     }
 }

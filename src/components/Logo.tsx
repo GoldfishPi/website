@@ -1,5 +1,5 @@
-import React, { FC, useRef, useState, useEffect } from 'react';
-import { useSpring, useChain, animated, config } from 'react-spring';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { animated, config, useChain, useSpring } from 'react-spring';
 
 interface LogoProps {}
 
@@ -197,23 +197,6 @@ const RotateAnimation = React.forwardRef<any, any>(({ on, children }, ref: any) 
         ref,
     });
     return <animated.div style={spring}>{children}</animated.div>;
-});
-
-const TextHeader = React.forwardRef<any, any>(({ on }, ref: any) => {
-    const spring = useSpring({
-        from: {
-            transform: 'translate3d(-150%, 0, 0)',
-            padding: 'var(--padding)',
-        },
-        transform: on ? 'translate3d(0%, 0, 0)' : 'translate3d(-150%, 0, 0)',
-        ref,
-    });
-
-    return (
-        <div style={{ overflow: 'hidden' }}>
-            <animated.h2 style={spring}>Erik Badger</animated.h2>
-        </div>
-    );
 });
 
 const Logo: FC<LogoProps> = ({}) => {

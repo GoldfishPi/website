@@ -1,15 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Normalize } from 'styled-normalize';
-import styled from 'styled-components';
-
 import LassieStyles from '@lassiebug/styles';
-import Header from '@lassiebug/header';
-import { Link } from 'gatsby';
-import Logo from './logo';
-import Sidebar from './Sidebar';
-import { useSpring, animated, config } from 'react-spring';
-import { useSidebar } from '../providers';
 import { useWindowWidth } from '@react-hook/window-size';
+import React, { useEffect, useRef } from 'react';
+import { animated, useSpring } from 'react-spring';
+import styled from 'styled-components';
+import { Normalize } from 'styled-normalize';
+import { useSidebar } from '../providers';
+import Sidebar from './Sidebar';
 
 const AppContainer = styled.div`
     display: flex;
