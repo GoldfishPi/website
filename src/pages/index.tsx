@@ -51,6 +51,7 @@ const Menu = styled.div`
     padding:2rem;
     color:var(--text);
     position:absolute;
+    max-width:25px;
 
     @media screen and (min-width:1035px) {
         visibility:hidden;
