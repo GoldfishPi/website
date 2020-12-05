@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import { Normalize } from "styled-normalize"
 import styled from "styled-components"
 
@@ -6,6 +6,9 @@ import LassieStyles from '@lassiebug/styles';
 import Header from "@lassiebug/header";
 import { Link } from "gatsby";
 import Logo from "./logo";
+import Sidebar from "./Sidebar";
+import {useSpring, animated, config} from "react-spring";
+import {useSidebar} from "../providers";
 
 
 const AppContainer = styled.div`
@@ -41,13 +44,26 @@ const Main = styled.main`
   box-sizing:border-box;
 `
 
-const Layout = ({ children }: LayoutProps) => (
-    <AppContainer>
-        <Normalize />
-        <Main>{children}</Main>
-        <LassieStyles/>
-    </AppContainer>
-)
+const Layout = ({ children }: LayoutProps) => {
+    const sidebar = useSidebar();
+    const openSpring = useSpring({
+        config: config.gentle,
+        position:'fixed',
+        transform: sidebar.open ?  `translateX(-10px)` : `translateX(-100%)`
+    });
+    return (
+        <AppContainer>
+            <Normalize />
+            <Main>
+                <animated.div style={openSpring}>
+                    <Sidebar />
+                </animated.div>
+                {children}
+            </Main>
+            <LassieStyles/>
+        </AppContainer>
+    )
+}
 
 interface LayoutProps {
     children: React.ReactNode

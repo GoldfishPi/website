@@ -5,4 +5,12 @@
  */
 
 // You can delete this file if you're not using it
+import React from 'react';
 import './src/styles/global.css';
+import { SidebarProvider } from './src/providers';
+
+export const wrapRootElement = ({ element }) => (
+    <SidebarProvider>
+        {element}
+    </SidebarProvider>
+);
