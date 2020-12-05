@@ -125,7 +125,7 @@ module.exports = {
                 background_color: `#292f38`,
                 theme_color: `#c74ded`,
                 display: `minimal-ui`,
-                icon: `src/images/logo.svg`,
+                icon: `src/images/favicon.png`,
             },
         },
         {
@@ -146,7 +146,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-google-fonts`,
             options: {
-                fonts: [`Roboto`],
+                fonts: [`Roboto`, `Lobster`],
             },
         },
         `gatsby-plugin-robots-txt`,

@@ -24,30 +24,44 @@ const IndexPage:FC<IndexPageProps> = ({ data }) => {
     return (
         <Layout>
             <SEO title="Erik Badger" />
-            <Styles>
-                <div className="__hero">
-                    <div className="__menu" onClick={() => sidebar.setOpen(true)}>
-                        <FontAwesomeIcon icon={faBars} size="2x"/>
+            <Background>
+                <Menu onClick={() => sidebar.setOpen(true)}>
+                    <FontAwesomeIcon icon={faBars} size="2x"/>
+                </Menu>
+                <Styles>
+                    <div className="__hero">
+                        <div className="__text">
+                            <MDXRenderer>{data.page.body}</MDXRenderer>
+                        </div>
                     </div>
-                    <div className="__text">
-                        <MDXRenderer>{data.page.body}</MDXRenderer>
-                    </div>
-                </div>
-            </Styles>
+                </Styles>
+            </Background>
         </Layout>
     );
 };
 
+const Background = styled.div`
+    background: linear-gradient(335deg, var(--blue) 0%, var(--cyan) 25%, var(--magenta) 100%);
+    display:flex;
+    flex-grow:1;
+`
+
+const Menu = styled.div`
+
+    padding:2rem;
+    color:var(--text);
+    position:absolute;
+
+    @media screen and (min-width:1035px) {
+        visibility:hidden;
+    }
+`;
 
 const Styles = styled.div`
     display:flex;
     flex-grow:1;
-    background: linear-gradient(335deg, var(--blue) 0%, var(--cyan) 25%, var(--magenta) 100%);
 
-    .__menu {
-        padding-top:2rem;
-        color:var(--text);
-    }
+    align-items:center;
 
     .__hero {
         padding:0 10vw;
@@ -60,7 +74,7 @@ const Styles = styled.div`
 
 
     .__text {
-        padding-top:2rem;
+        // padding-top:2rem;
         flex-grow:1;
     }
 
@@ -73,11 +87,6 @@ const Styles = styled.div`
         font-size:1.3rem;
     }
 
-    @media screen and (min-width:1035px) {
-        .__menu {
-            visibility:hidden;
-        }
-    }
 
 `
 
