@@ -23,7 +23,7 @@ const IndexPage:FC<IndexPageProps> = ({ data }) => {
     const sidebar = useSidebar();
     return (
         <Layout>
-            <SEO title="" />
+            <SEO title="Erik Badger" />
             <Styles>
                 <div className="__hero">
                     <div className="__menu" onClick={() => sidebar.setOpen(true)}>
