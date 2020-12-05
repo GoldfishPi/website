@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect, useRef} from "react"
 import { Normalize } from "styled-normalize"
 import styled from "styled-components"
 
@@ -9,6 +9,7 @@ import Logo from "./logo";
 import Sidebar from "./Sidebar";
 import {useSpring, animated, config} from "react-spring";
 import {useSidebar} from "../providers";
+import {useWindowWidth} from '@react-hook/window-size';
 
 
 const AppContainer = styled.div`
@@ -45,20 +46,47 @@ const Main = styled.main`
 `
 
 const Layout = ({ children }: LayoutProps) => {
+
     const sidebar = useSidebar();
+    const windowWidth = useWindowWidth();
+
+    const sidebarRef = useRef<any>();
+
+    const mobileBreak = windowWidth >= 1035;
+
     const openSpring = useSpring({
-        config: config.gentle,
-        position:'fixed',
-        transform: sidebar.open ?  `translateX(-10px)` : `translateX(-100%)`
+        position:mobileBreak ? 'relative':'fixed',
+        transform: sidebar.open || mobileBreak ?  `translateX(0px)` : `translateX(-100%)`,
+        zIndex:1
     });
+
+    const blurSpring = useSpring({
+        filter:!sidebar.open || mobileBreak ? 'blur(0px)' :'blur(5px)',
+        display:'flex'
+    });
+
+    useEffect(() => {
+        const handler = (e:any) => {
+            if(!sidebarRef.current.contains(e.target)){
+                sidebar.setOpen(false);
+            }
+        }
+        document.addEventListener('mousedown', handler)
+        return () => document.removeEventListener('mousedown', handler);
+    }, [sidebar])
+
     return (
         <AppContainer>
             <Normalize />
             <Main>
-                <animated.div style={openSpring}>
-                    <Sidebar />
+                <animated.div style={openSpring} ref={sidebarRef}>
+                    <div ref={sidebarRef}>
+                        <Sidebar />
+                    </div>
                 </animated.div>
-                {children}
+                <animated.div style={blurSpring}>
+                    {children}
+                </animated.div>
             </Main>
             <LassieStyles/>
         </AppContainer>

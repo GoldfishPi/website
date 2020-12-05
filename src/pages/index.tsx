@@ -73,6 +73,12 @@ const Styles = styled.div`
         font-size:1.3rem;
     }
 
+    @media screen and (min-width:1035px) {
+        .__menu {
+            visibility:hidden;
+        }
+    }
+
 `
 
 export const query = graphql`

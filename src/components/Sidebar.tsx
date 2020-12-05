@@ -13,7 +13,7 @@ const iconSize = "3x";
 /**
  * @description Sidebar Component
  */
-const Sidebar:FC<SidebarProps> = ({ }) => {
+const Sidebar:FC<SidebarProps> = ({}) => {
     return (
         <Nav>
             <Logo />
@@ -34,7 +34,6 @@ const Nav = styled.div`
 
     padding:var(--padding-05);
 
-    padding-left:20px;
     padding-bottom:var(--padding-20);
 
     height:100vh;
