@@ -1,28 +1,28 @@
-import {faBars} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {graphql, Page} from 'gatsby';
-import {MDXRenderer} from 'gatsby-plugin-mdx';
-import React, {FC} from 'react';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { graphql, Page } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
-import {useSidebar} from '../providers';
+import { useSidebar } from '../providers';
 
 interface IndexPageProps extends Page {
-    data:any;
+    data: any;
 }
 
 /**
-* @description IndexPage Component
-*/
-const IndexPage:FC<IndexPageProps> = ({ data }) => {
+ * @description IndexPage Component
+ */
+const IndexPage: FC<IndexPageProps> = ({ data }) => {
     const sidebar = useSidebar();
     return (
         <Layout>
             <SEO title="Erik Badger" />
             <Background>
                 <Menu onClick={() => sidebar.setOpen(true)}>
-                    <FontAwesomeIcon icon={faBars} size="2x"/>
+                    <FontAwesomeIcon icon={faBars} size="2x" />
                 </Menu>
                 <Styles>
                     <div className="__hero">
@@ -38,58 +38,54 @@ const IndexPage:FC<IndexPageProps> = ({ data }) => {
 
 const Background = styled.div`
     background: linear-gradient(335deg, var(--blue) 0%, var(--cyan) 25%, var(--magenta) 100%);
-    display:flex;
-    flex-grow:1;
-`
+    display: flex;
+    flex-grow: 1;
+`;
 
 const Menu = styled.div`
+    padding: 2rem;
+    color: var(--text);
+    position: absolute;
+    max-width: 25px;
 
-    padding:2rem;
-    color:var(--text);
-    position:absolute;
-    max-width:25px;
-
-    @media screen and (min-width:1035px) {
-        visibility:hidden;
+    @media screen and (min-width: 1035px) {
+        visibility: hidden;
     }
 `;
 
 const Styles = styled.div`
-    display:flex;
-    flex-grow:1;
+    display: flex;
+    flex-grow: 1;
 
-    align-items:center;
+    align-items: center;
 
     .__hero {
-        padding:0 10vw;
+        padding: 0 10vw;
 
-        display:flex;
-        flex-direction:column;
+        display: flex;
+        flex-direction: column;
 
-        flex-grow:1;
+        flex-grow: 1;
     }
-
 
     .__text {
         // padding-top:2rem;
-        flex-grow:1;
+        flex-grow: 1;
     }
 
     h1 {
-        margin-bottom:2rem;
+        margin-bottom: 2rem;
     }
 
     p {
-        line-height:2.5;
-        font-size:1.3rem;
+        line-height: 2.5;
+        font-size: 1.3rem;
     }
-
-
-`
+`;
 
 export const query = graphql`
     {
-        page: mdx(frontmatter: { name:{ eq: "about" } }) {
+        page: mdx(frontmatter: { name: { eq: "about" } }) {
             body
         }
     }

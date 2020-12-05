@@ -1,30 +1,27 @@
 import React, { FC, useRef, useState, useEffect } from 'react';
 import { useSpring, useChain, animated, config } from 'react-spring';
 
-interface LogoProps {
-}
+interface LogoProps {}
 
-const CircleSvg = React.forwardRef<any, any>(({ on }, ref:any) => {
-
+const CircleSvg = React.forwardRef<any, any>(({ on }, ref: any) => {
     const initY = 50;
     const spring = useSpring({
         from: {
-            radius:10,
+            radius: 10,
 
-            blueX:10,
-            blueY:initY,
+            blueX: 10,
+            blueY: initY,
 
             yellowX: 35,
-            yellowY:initY,
+            yellowY: initY,
 
-            redX:60,
-            redY:initY,
+            redX: 60,
+            redY: initY,
 
-            greenX:85,
-            greenY:initY,
+            greenX: 85,
+            greenY: initY,
 
             opacity: 1,
-
         },
 
         opacity: 1,
@@ -42,127 +39,184 @@ const CircleSvg = React.forwardRef<any, any>(({ on }, ref:any) => {
         greenX: on ? 5 : 85,
         greenY: on ? 95 : initY,
 
-        ref
-    })
-    
+        ref,
+    });
 
     return (
-        <animated.div style={{ opacity:spring.opacity }}>
-            <svg 
-                width="100" 
-                height="100"
-            >
-                <animated.circle cx={spring.blueX} cy={spring.blueY} r={spring.radius} strokeWidth="3" fill="var(--blue)"/>
-                <animated.circle  cx={spring.yellowX} cy={spring.yellowY} r={spring.radius} strokeWidth="3" fill="var(--yellow)"/>
-                <animated.circle  cx={spring.redX} cy={spring.redY} r={spring.radius} strokeWidth="3" fill="var(--red)"/>
-                <animated.circle  cx={spring.greenX} cy={spring.greenY} r={spring.radius} strokeWidth="3" fill="var(--green)"/>
+        <animated.div style={{ opacity: spring.opacity }}>
+            <svg width="100" height="100">
+                <animated.circle
+                    cx={spring.blueX}
+                    cy={spring.blueY}
+                    r={spring.radius}
+                    strokeWidth="3"
+                    fill="var(--blue)"
+                />
+                <animated.circle
+                    cx={spring.yellowX}
+                    cy={spring.yellowY}
+                    r={spring.radius}
+                    strokeWidth="3"
+                    fill="var(--yellow)"
+                />
+                <animated.circle
+                    cx={spring.redX}
+                    cy={spring.redY}
+                    r={spring.radius}
+                    strokeWidth="3"
+                    fill="var(--red)"
+                />
+                <animated.circle
+                    cx={spring.greenX}
+                    cy={spring.greenY}
+                    r={spring.radius}
+                    strokeWidth="3"
+                    fill="var(--green)"
+                />
             </svg>
         </animated.div>
-    )
+    );
 });
 
-const LinesSvg = React.forwardRef<any,any>(({on}:any, ref:any) => {
+const LinesSvg = React.forwardRef<any, any>(({ on }: any, ref: any) => {
     const spring = useSpring({
         from: {
-            positive:10,
-            negative:90,
-            opacity:0,
+            positive: 10,
+            negative: 90,
+            opacity: 0,
         },
         positive: on ? 90 : 10,
         negative: on ? 10 : 90,
 
         opacity: on ? 1 : 0,
 
-        ref
-    })
-
-    return (
-        <animated.div style={{ opacity:spring.opacity }}>
-            <svg width="100" height="100">
-                <animated.line x1="0" y1="5" x2={spring.positive} y2="5" stroke="var(--blue)" strokeWidth="10"/>
-                <animated.line x1="95" y1={spring.positive} x2="95" y2="0" stroke="var(--yellow)" strokeWidth="10"/>
-                <animated.line x1={spring.negative} y1="95" x2="100" y2="95" stroke="var(--red)" strokeWidth="10"/>
-                <animated.line x1="5" y1={spring.negative} x2="5" y2="100" stroke="var(--green)" strokeWidth="10"/>
-            </svg>
-        </animated.div>
-    )
-});
-
-const SquareSvg = React.forwardRef<any, any>(({on}:any, ref:any) => {
-    const spring = useSpring({
-
-        from: {
-            size:10,
-            pos:90,
-            opacity: 0,
-        },
-
-        size:on ? 50 : 10,
-        pos: on ? 50 : 90,
-
-        opacity: on ? 1 : 0,
-
-        ref
+        ref,
     });
 
     return (
         <animated.div style={{ opacity: spring.opacity }}>
             <svg width="100" height="100">
-                <animated.rect x="0" width={spring.size} height={spring.size} fill="var(--blue)"/>
-                <animated.rect x={spring.pos} width={spring.size} height={spring.size} fill="var(--yellow)"/>
-                <animated.rect x={spring.pos} y={spring.pos} width={spring.size} height={spring.size} fill="var(--red)"/>
-                <animated.rect x="0" y={spring.pos} width={spring.size} height={spring.size} fill="var(--green)"/>
+                <animated.line
+                    x1="0"
+                    y1="5"
+                    x2={spring.positive}
+                    y2="5"
+                    stroke="var(--blue)"
+                    strokeWidth="10"
+                />
+                <animated.line
+                    x1="95"
+                    y1={spring.positive}
+                    x2="95"
+                    y2="0"
+                    stroke="var(--yellow)"
+                    strokeWidth="10"
+                />
+                <animated.line
+                    x1={spring.negative}
+                    y1="95"
+                    x2="100"
+                    y2="95"
+                    stroke="var(--red)"
+                    strokeWidth="10"
+                />
+                <animated.line
+                    x1="5"
+                    y1={spring.negative}
+                    x2="5"
+                    y2="100"
+                    stroke="var(--green)"
+                    strokeWidth="10"
+                />
             </svg>
-        </animated.div>
-    )
-})
-
-const RotateAnimation = React.forwardRef<any, any>(({on, children}, ref:any) => {
-    const spring = useSpring({
-        config:config.gentle,
-        from: {
-            transform:'rotate(0deg) scale(0)',
-            borderRadius:'5px',
-        },
-        transform:`rotate(${on ? 45 : 0}deg) scale(${on ? '0.7' : '1'})`,
-        borderRadius:on ? '10px' : '0px',
-
-        overflow:'hidden',
-        height:100,
-        width:100,
-
-        opacity: 1,
-
-        ref
-    });
-    return (
-        <animated.div style={ spring }>
-            { children }
         </animated.div>
     );
 });
 
-const TextHeader = React.forwardRef<any, any>(({on}, ref:any) => {
+const SquareSvg = React.forwardRef<any, any>(({ on }: any, ref: any) => {
     const spring = useSpring({
         from: {
-            transform:'translate3d(-150%, 0, 0)',
-            padding:'var(--padding)'
+            size: 10,
+            pos: 90,
+            opacity: 0,
         },
-        transform: on ? 'translate3d(0%, 0, 0)' : 'translate3d(-150%, 0, 0)',
-        ref
+
+        size: on ? 50 : 10,
+        pos: on ? 50 : 90,
+
+        opacity: on ? 1 : 0,
+
+        ref,
     });
 
     return (
-        <div style={{ overflow:'hidden' }}>
-            <animated.h2 style={ spring }>
-                Erik Badger
-            </animated.h2>
-        </div>
-    )
+        <animated.div style={{ opacity: spring.opacity }}>
+            <svg width="100" height="100">
+                <animated.rect x="0" width={spring.size} height={spring.size} fill="var(--blue)" />
+                <animated.rect
+                    x={spring.pos}
+                    width={spring.size}
+                    height={spring.size}
+                    fill="var(--yellow)"
+                />
+                <animated.rect
+                    x={spring.pos}
+                    y={spring.pos}
+                    width={spring.size}
+                    height={spring.size}
+                    fill="var(--red)"
+                />
+                <animated.rect
+                    x="0"
+                    y={spring.pos}
+                    width={spring.size}
+                    height={spring.size}
+                    fill="var(--green)"
+                />
+            </svg>
+        </animated.div>
+    );
 });
 
-const Logo:FC<LogoProps> = ({}) => {
+const RotateAnimation = React.forwardRef<any, any>(({ on, children }, ref: any) => {
+    const spring = useSpring({
+        config: config.gentle,
+        from: {
+            transform: 'rotate(0deg) scale(0)',
+            borderRadius: '5px',
+        },
+        transform: `rotate(${on ? 45 : 0}deg) scale(${on ? '0.7' : '1'})`,
+        borderRadius: on ? '10px' : '0px',
 
+        overflow: 'hidden',
+        height: 100,
+        width: 100,
+
+        opacity: 1,
+
+        ref,
+    });
+    return <animated.div style={spring}>{children}</animated.div>;
+});
+
+const TextHeader = React.forwardRef<any, any>(({ on }, ref: any) => {
+    const spring = useSpring({
+        from: {
+            transform: 'translate3d(-150%, 0, 0)',
+            padding: 'var(--padding)',
+        },
+        transform: on ? 'translate3d(0%, 0, 0)' : 'translate3d(-150%, 0, 0)',
+        ref,
+    });
+
+    return (
+        <div style={{ overflow: 'hidden' }}>
+            <animated.h2 style={spring}>Erik Badger</animated.h2>
+        </div>
+    );
+});
+
+const Logo: FC<LogoProps> = ({}) => {
     const [on, toggle] = useState(false);
 
     const circleRef = useRef<any>({});
@@ -175,35 +229,32 @@ const Logo:FC<LogoProps> = ({}) => {
         return () => {
             toggle(false);
             window.clearTimeout(timeout);
-        }
+        };
     }, []);
 
-    useChain(on ? [circleRef, lineRef, squareRef, rotateRef] : [rotateRef, squareRef, lineRef, circleRef])
+    useChain(
+        on ? [circleRef, lineRef, squareRef, rotateRef] : [rotateRef, squareRef, lineRef, circleRef]
+    );
 
     return (
-        <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', padding:'var(--padding)', minHeight:150}}>
-            <RotateAnimation 
-                ref={rotateRef}
-                on={on}
-            >
-                <div style={{ display:'grid' }}>
-                    <div style={{ gridRow:1, gridColumn:1 }}>
-                        <CircleSvg 
-                            ref={circleRef}
-                            on={on}
-                        />
+        <div
+            style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                padding: 'var(--padding)',
+                minHeight: 150,
+            }}>
+            <RotateAnimation ref={rotateRef} on={on}>
+                <div style={{ display: 'grid' }}>
+                    <div style={{ gridRow: 1, gridColumn: 1 }}>
+                        <CircleSvg ref={circleRef} on={on} />
                     </div>
-                    <div style={{ gridRow:1, gridColumn:1}}>
-                        <LinesSvg
-                            ref={lineRef}
-                            on={on}
-                        />
+                    <div style={{ gridRow: 1, gridColumn: 1 }}>
+                        <LinesSvg ref={lineRef} on={on} />
                     </div>
-                    <div style={{ gridRow:1, gridColumn:1}}>
-                        <SquareSvg 
-                            ref={squareRef}
-                            on={on}
-                        />
+                    <div style={{ gridRow: 1, gridColumn: 1 }}>
+                        <SquareSvg ref={squareRef} on={on} />
                     </div>
                 </div>
             </RotateAnimation>

@@ -11,49 +11,48 @@ deckDeckGoHighlightElement();
 
 interface BlogPostProps {
     pageContext: {
-        title:string;
-        html:string;
-        date:string;
-        description:string;
-    }
+        title: string;
+        html: string;
+        date: string;
+        description: string;
+    };
 }
 
 const Styles = styled.div`
-    flex-grow:1;
+    flex-grow: 1;
     .__layout {
-        display:grid;
-        grid-template-columns:1fr 3fr 1fr;
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
     }
     .__content {
-        grid-column:2;
+        grid-column: 2;
     }
 
     .__body {
-        margin:var(--padding-20);
+        margin: var(--padding-20);
         p {
-            font-size:1.3rem;
-            margin-bottom:var(--padding-20);
+            font-size: 1.3rem;
+            margin-bottom: var(--padding-20);
         }
     }
 
-    @media screen and (max-width:800px) {
+    @media screen and (max-width: 800px) {
         .__layout {
-            grid-template-columns:1fr 4fr 1fr;
+            grid-template-columns: 1fr 4fr 1fr;
         }
     }
 
-    @media screen and (max-width:600px) {
+    @media screen and (max-width: 600px) {
         .__layout {
-            grid-template-columns:1fr;
+            grid-template-columns: 1fr;
         }
         .__content {
-            grid-column:1;
+            grid-column: 1;
         }
     }
+`;
 
-`
-
-const BlogPost:FC<BlogPostProps> = ({ pageContext }) => {
+const BlogPost: FC<BlogPostProps> = ({ pageContext }) => {
     console.log('date lol', pageContext.date);
     return (
         <Layout>
@@ -61,11 +60,11 @@ const BlogPost:FC<BlogPostProps> = ({ pageContext }) => {
                 <title>Blog | {pageContext.title}</title>
                 <meta name="description" content={pageContext.description} />
 
-                <meta property="og:type" content="Blog"/>
+                <meta property="og:type" content="Blog" />
                 <meta property="og:title" content={pageContext.title} />
-                <meta property="og:description" content={pageContext.description}/>
-                <meta property="og:site_name" content="Erik Badger"/>
-                <meta property="og:url" content="https://erikbadger.com"/>
+                <meta property="og:description" content={pageContext.description} />
+                <meta property="og:site_name" content="Erik Badger" />
+                <meta property="og:url" content="https://erikbadger.com" />
 
                 <meta property="twitter:title" content={pageContext.title} />
                 <meta property="twitter:description" content={pageContext.description} />
@@ -76,11 +75,9 @@ const BlogPost:FC<BlogPostProps> = ({ pageContext }) => {
                         <Card hoverable={false}>
                             <h1>{pageContext.title}</h1>
                             <p>{moment(pageContext.date).format('MMMM, DD, yyyy')}</p>
-                            <div 
+                            <div
                                 className="__body"
-                                dangerouslySetInnerHTML={{__html:pageContext.html}}
-                            >
-                            </div>
+                                dangerouslySetInnerHTML={{ __html: pageContext.html }}></div>
                         </Card>
                     </div>
                 </div>

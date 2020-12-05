@@ -1,17 +1,16 @@
-import {faGithub} from '@fortawesome/free-brands-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import React, {FC} from 'react';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 
-interface SidebarProps {
-}
+interface SidebarProps {}
 
-const iconSize = "3x";
+const iconSize = '3x';
 
 /**
  * @description Sidebar Component
  */
-const Sidebar:FC<SidebarProps> = ({}) => {
+const Sidebar: FC<SidebarProps> = ({}) => {
     return (
         <Nav>
             <div className="__logo">
@@ -19,7 +18,7 @@ const Sidebar:FC<SidebarProps> = ({}) => {
             </div>
             <div className="__links">
                 <a href="https://github.com/GoldfishPi" target="_blank">
-                    <FontAwesomeIcon icon={faGithub} size={iconSize}/>
+                    <FontAwesomeIcon icon={faGithub} size={iconSize} />
                 </a>
             </div>
         </Nav>
@@ -27,51 +26,51 @@ const Sidebar:FC<SidebarProps> = ({}) => {
 };
 
 const Nav = styled.div`
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    align-items:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
-    padding:var(--padding-20) var(--padding-10);
+    padding: var(--padding-20) var(--padding-10);
 
-    height:100vh;
+    height: 100vh;
 
-    background:var(--background);
-    box-sizing:border-box;
+    background: var(--background);
+    box-sizing: border-box;
 
     a {
-        padding-bottom:var(--padding-10);
+        padding-bottom: var(--padding-10);
     }
 
     .__logo {
-        width:50px;
-        height:50px;
+        width: 50px;
+        height: 50px;
 
-        border-radius:100%;
+        border-radius: 100%;
 
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        
-        padding:var(--padding-05);
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        background:linear-gradient(335deg,var(--blue) 0%,var(--blue) 10%,var(--magenta) 100%);
+        padding: var(--padding-05);
+
+        background: linear-gradient(335deg, var(--blue) 0%, var(--blue) 10%, var(--magenta) 100%);
 
         p {
-            font-size:2rem;
-            font-family:'Lobster', cursive;
+            font-size: 2rem;
+            font-family: 'Lobster', cursive;
         }
     }
 
     .__nav {
-        display:flex;
-        flex-direction:column;
-        flex-grow:1;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
 
         & > a {
-            padding-bottom:var(--padding-20);
+            padding-bottom: var(--padding-20);
         }
     }
-`
+`;
 
 export default Sidebar;

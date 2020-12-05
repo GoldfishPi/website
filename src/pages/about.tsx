@@ -1,21 +1,21 @@
 import React, { FC } from 'react';
 import Layout from '../components/layout';
-import {graphql} from 'gatsby';
+import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
 
 const AboutStyles = styled.div`
-    width:100%;
-    display:flex;
+    width: 100%;
+    display: flex;
     justify-content: center;
-`
+`;
 
 interface AboutPageProps {
-    data:any;
+    data: any;
 }
 
-const AboutPage:FC<AboutPageProps> = ({ data }) => {
+const AboutPage: FC<AboutPageProps> = ({ data }) => {
     return (
         <Layout>
             <Helmet>
@@ -31,13 +31,13 @@ const AboutPage:FC<AboutPageProps> = ({ data }) => {
     );
 };
 
-            // <div dangerouslySetInnerHTML={{__html:data.page.markdown.html}}></div>
+// <div dangerouslySetInnerHTML={{__html:data.page.markdown.html}}></div>
 export const query = graphql`
     {
-        page: mdx(frontmatter: { name:{ eq: "about" } }) {
+        page: mdx(frontmatter: { name: { eq: "about" } }) {
             body
         }
     }
-`
+`;
 
 export default AboutPage;

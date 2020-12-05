@@ -1,29 +1,23 @@
 import React, { FC, createContext, useContext, useState } from 'react';
 
 interface SidebarState {
-    open:boolean;
-    setOpen:(open:boolean) => void;
+    open: boolean;
+    setOpen: (open: boolean) => void;
 }
 
 const SidebarContext = createContext<SidebarState>({
-    open:false,
-    setOpen:() => {}
+    open: false,
+    setOpen: () => {},
 });
 
-export const SidebarProvider:FC = ({ children }) => {
+export const SidebarProvider: FC = ({ children }) => {
     const [open, setOpen] = useState(false);
-    const state:SidebarState = {
+    const state: SidebarState = {
         open,
-        setOpen
-    }
+        setOpen,
+    };
 
-    return (
-        <SidebarContext.Provider value={ state }>
-            { children }
-        </SidebarContext.Provider>
-    )
-}
+    return <SidebarContext.Provider value={state}>{children}</SidebarContext.Provider>;
+};
 
-export const useSidebar = () => (
-    useContext(SidebarContext)
-);
+export const useSidebar = () => useContext(SidebarContext);
