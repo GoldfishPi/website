@@ -62,7 +62,8 @@ const Layout = ({ children }: LayoutProps) => {
 
     const blurSpring = useSpring({
         filter:!sidebar.open || mobileBreak ? 'blur(0px)' :'blur(5px)',
-        display:'flex'
+        display:'flex',
+        flexGrow:1
     });
 
     useEffect(() => {
