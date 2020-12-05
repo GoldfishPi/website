@@ -169,13 +169,12 @@ const Logo:FC<LogoProps> = ({}) => {
     const lineRef = useRef<any>();
     const squareRef = useRef<any>();
     const rotateRef = useRef<any>();
-    const textRef = useRef<any>();
 
     useEffect(() => {
         setTimeout(() => toggle(true), 1500);
     }, []);
 
-    useChain(on ? [circleRef, lineRef, squareRef, rotateRef, textRef] : [textRef, rotateRef, squareRef, lineRef, circleRef])
+    useChain(on ? [circleRef, lineRef, squareRef, rotateRef] : [rotateRef, squareRef, lineRef, circleRef])
     return (
         <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', padding:'var(--padding)', minHeight:150}}>
             <RotateAnimation 
@@ -203,7 +202,6 @@ const Logo:FC<LogoProps> = ({}) => {
                     </div>
                 </div>
             </RotateAnimation>
-            <TextHeader ref={textRef} on={on} />
         </div>
     );
 };

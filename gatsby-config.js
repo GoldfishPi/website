@@ -122,10 +122,10 @@ module.exports = {
                 name: `gatsby-typescript-minimal`,
                 short_name: `starter`,
                 start_url: `/`,
-                background_color: `#663399`,
-                theme_color: `#663399`,
+                background_color: `#292f38`,
+                theme_color: `#c74ded`,
                 display: `minimal-ui`,
-                icon: `src/images/logo.png`,
+                icon: `src/images/logo.svg`,
             },
         },
         {

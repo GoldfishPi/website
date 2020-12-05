@@ -17,8 +17,16 @@ const AppContainer = styled.div`
   font-family:-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
   a {
       text-decoration:none;
-      color:var(--blue);
+      color:var(--text);
       font-weight: bold;
+      border-bottom:2px solid var(--text);
+
+      transition:color .5s, border-bottom-color .5s;
+
+      &:hover {
+          color:var(--magenta);
+          border-bottom-color:var(--magenta);
+      }
   }
 
   p {
