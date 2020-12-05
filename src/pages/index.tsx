@@ -1,15 +1,11 @@
-import { useState } from 'react';
-import {faGithub} from '@fortawesome/free-brands-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {graphql, Page} from 'gatsby';
 import {MDXRenderer} from 'gatsby-plugin-mdx';
 import React, {FC} from 'react';
 import styled from 'styled-components';
-import Layout from '../components/layout';
-import Logo from '../components/logo';
-import SEO from '../components/seo';
-import Sidebar from '../components/Sidebar';
+import Layout from '../components/Layout';
+import SEO from '../components/Seo';
 import {useSidebar} from '../providers';
 
 interface IndexPageProps extends Page {

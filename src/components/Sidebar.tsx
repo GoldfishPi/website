@@ -1,9 +1,7 @@
-import React, { FC } from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faGithub} from '@fortawesome/free-brands-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import React, {FC} from 'react';
 import styled from 'styled-components';
-import Logo from './logo';
-import {useSpring, animated, config} from 'react-spring';
 
 interface SidebarProps {
 }
