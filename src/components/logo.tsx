@@ -1,5 +1,5 @@
 import React, { FC, useRef, useState, useEffect } from 'react';
-import { useSpring, useChain, animated } from 'react-spring';
+import { useSpring, useChain, animated, config } from 'react-spring';
 
 interface LogoProps {
 }
@@ -119,7 +119,7 @@ const SquareSvg = React.forwardRef<any, any>(({on}:any, ref:any) => {
 
 const RotateAnimation = React.forwardRef<any, any>(({on, children}, ref:any) => {
     const spring = useSpring({
-
+        config:config.gentle,
         from: {
             transform:'rotate(0deg) scale(0)',
             borderRadius:'5px',
@@ -171,10 +171,15 @@ const Logo:FC<LogoProps> = ({}) => {
     const rotateRef = useRef<any>();
 
     useEffect(() => {
-        setTimeout(() => toggle(true), 1500);
+        const timeout = setTimeout(() => toggle(true), 2000);
+        return () => {
+            toggle(false);
+            window.clearTimeout(timeout);
+        }
     }, []);
 
     useChain(on ? [circleRef, lineRef, squareRef, rotateRef] : [rotateRef, squareRef, lineRef, circleRef])
+
     return (
         <div style={{ display:'flex', flexWrap:'wrap', alignItems:'center', padding:'var(--padding)', minHeight:150}}>
             <RotateAnimation 
