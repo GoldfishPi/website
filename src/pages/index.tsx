@@ -88,6 +88,17 @@ export const query = graphql`
         page: mdx(frontmatter: { name: { eq: "about" } }) {
             body
         }
+        blogPosts: allMdx(filter: { frontmatter: { path: { regex: "/blog/" } } }) {
+            edges {
+                node {
+                    frontmatter {
+                        date
+                        title
+                        path
+                    }
+                }
+            }
+        }
     }
 `;
 

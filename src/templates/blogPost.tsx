@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 // import Card from '../components/card';
 import styled from 'styled-components';
 import { Card } from '@lassiebug/card';

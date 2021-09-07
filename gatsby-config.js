@@ -3,7 +3,7 @@ module.exports = {
         title: `Simple Web Developer`,
         description: ``,
         author: `Erik Badger`,
-        siteUrl: `https://www.erikbadger.com`
+        siteUrl: `https://www.erikbadger.com`,
     },
     plugins: [
         `gatsby-plugin-typescript`,
@@ -20,21 +20,21 @@ module.exports = {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `posts`,
-                path: `${__dirname}/src/content/blog`
-            }
+                path: `${__dirname}/src/content/blog`,
+            },
         },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
                 name: `pages`,
-                path: `${__dirname}/src/content/pages`
-            }
+                path: `${__dirname}/src/content/pages`,
+            },
         },
         {
             resolve: `gatsby-plugin-mdx`,
             options: {
                 extensions: [`.md`, `.mdx`],
-                gatsbyRemarkPlugins:[
+                gatsbyRemarkPlugins: [
                     {
                         resolve: `gatsby-remark-images`,
                         options: {
@@ -48,8 +48,8 @@ module.exports = {
                         resolve: `gatsby-remark-embed-video`,
                         options: {
                             width: 800,
-                            ratio: 1.77, 
-                            height: 400, 
+                            ratio: 1.77,
+                            height: 400,
                             related: false,
                             noIframeBorder: true,
                             customTransformers: [
@@ -66,8 +66,8 @@ module.exports = {
                             wrapperStyle: `margin-bottom: 1.0725rem`,
                         },
                     },
-                ]
-            }
+                ],
+            },
         },
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
@@ -88,8 +88,8 @@ module.exports = {
                         resolve: `gatsby-remark-embed-video`,
                         options: {
                             width: 800,
-                            ratio: 1.77, 
-                            height: 400, 
+                            ratio: 1.77,
+                            height: 400,
                             related: false,
                             noIframeBorder: true,
                             customTransformers: [
@@ -109,8 +109,8 @@ module.exports = {
                     {
                         resolve: `gatsby-remark-highlight-code`,
                         options: {
-                            theme:'one-dark'
-                        }
+                            theme: 'one-dark',
+                        },
                     },
                 ],
             },
@@ -132,13 +132,13 @@ module.exports = {
             resolve: `gatsby-plugin-sitemap`,
             options: {
                 output: `/sitemap.xml`,
-                exclude: ["/404/*"],
+                exclude: ['/404/*'],
             },
         },
         {
             resolve: `gatsby-plugin-google-analytics`,
             options: {
-                trackingId: "XXXXXXXX",
+                trackingId: 'XXXXXXXX',
                 head: false,
                 respectDNT: true,
             },
@@ -154,4 +154,4 @@ module.exports = {
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,
     ],
-}
+};

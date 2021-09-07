@@ -6,13 +6,13 @@
 
 // You can delete this file if you're not using it
 const path = require('path');
-exports.createPages = async ({actions, graphql}) => {
+exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions;
-    const blogPostTemplate = path.resolve('src/templates/blogPost.tsx')
+    const blogPostTemplate = path.resolve('src/templates/blogPost.tsx');
 
     const queryResults = await graphql(`
         {
-            allPages: allFile(filter: { sourceInstanceName:{ eq: "posts"}}) {
+            allPages: allFile(filter: { sourceInstanceName: { eq: "posts" } }) {
                 edges {
                     node {
                         id
@@ -30,18 +30,17 @@ exports.createPages = async ({actions, graphql}) => {
                 }
             }
         }
-
-    `)
+    `);
     queryResults.data.allPages.edges.forEach(({ node }) => {
         createPage({
-            path:`/blog${node.markdown.frontmatter.path}`,
-            component:blogPostTemplate,
+            path: `/blog${node.markdown.frontmatter.path}`,
+            component: blogPostTemplate,
             context: {
-                title:node.markdown.frontmatter.title,
-                date:node.markdown.frontmatter.date,
-                html:node.markdown.html,
-                description:node.markdown.excerpt
-            }
-        })
+                title: node.markdown.frontmatter.title,
+                date: node.markdown.frontmatter.date,
+                html: node.markdown.html,
+                description: node.markdown.excerpt,
+            },
+        });
     });
-}
+};

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
@@ -35,6 +35,7 @@ const ProjectPageStyles = styled.div`
 `;
 
 const ProjectsPage: FC<ProjectsPageProps> = ({ data }) => {
+    console.log
     return (
         <Layout>
             <Helmet>
