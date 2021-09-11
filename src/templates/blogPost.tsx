@@ -26,6 +26,8 @@ const Styles = styled.div`
     }
     .__content {
         grid-column: 2;
+        max-height: 100vh;
+        overflow: auto;
     }
 
     .__body {
@@ -53,7 +55,6 @@ const Styles = styled.div`
 `;
 
 const BlogPost: FC<BlogPostProps> = ({ pageContext }) => {
-    console.log('date lol', pageContext.date);
     return (
         <Layout>
             <Helmet>

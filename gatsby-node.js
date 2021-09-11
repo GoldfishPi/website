@@ -33,7 +33,7 @@ exports.createPages = async ({ actions, graphql }) => {
     `);
     queryResults.data.allPages.edges.forEach(({ node }) => {
         createPage({
-            path: `/blog${node.markdown.frontmatter.path}`,
+            path: `/blog/${node.markdown.frontmatter.path}`,
             component: blogPostTemplate,
             context: {
                 title: node.markdown.frontmatter.title,
