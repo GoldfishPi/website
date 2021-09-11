@@ -22,12 +22,11 @@ const Styles = styled.div`
     flex-grow: 1;
     .__layout {
         display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
+        // grid-template-columns: 1fr 3fr 1fr;
     }
     .__content {
         grid-column: 2;
-        // max-height: 100vh;
-        // overflow: auto;
+        margin: 4rem;
     }
 
     .__body {
@@ -50,6 +49,7 @@ const Styles = styled.div`
         }
         .__content {
             grid-column: 1;
+            margin: 0;
         }
     }
 `;
