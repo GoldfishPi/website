@@ -26,8 +26,8 @@ const Styles = styled.div`
     }
     .__content {
         grid-column: 2;
-        max-height: 100vh;
-        overflow: auto;
+        // max-height: 100vh;
+        // overflow: auto;
     }
 
     .__body {

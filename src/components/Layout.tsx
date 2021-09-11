@@ -39,6 +39,7 @@ const Main = styled.main`
     display: flex;
     position: relative;
     box-sizing: border-box;
+    background: linear-gradient(335deg, var(--blue) 0%, var(--cyan) 25%, var(--magenta) 100%);
 `;
 
 const Layout = ({ children }: LayoutProps) => {
@@ -59,6 +60,8 @@ const Layout = ({ children }: LayoutProps) => {
         filter: !sidebar.open || mobileBreak ? 'blur(0px)' : 'blur(5px)',
         display: 'flex',
         flexGrow: 1,
+        maxHeight: '100vh',
+        overflow: 'auto',
     });
 
     useEffect(() => {
