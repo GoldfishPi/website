@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import styled from 'styled-components';
 import Helmet from 'react-helmet';
+import { Card } from '@lassiebug/card';
 
 interface ProjectsPageProps {
     data: any;
@@ -11,6 +12,13 @@ interface ProjectsPageProps {
 
 const ProjectPageStyles = styled.div`
     width: 100%;
+    margin: var(--padding-20);
+    .__background {
+        background: green;
+        padding: var(--padding-20);
+        background: var(--background);
+        border-radius: var(--corner);
+    }
     .__cards {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
@@ -35,14 +43,15 @@ const ProjectPageStyles = styled.div`
 `;
 
 const ProjectsPage: FC<ProjectsPageProps> = ({ data }) => {
-    console.log
     return (
         <Layout>
             <Helmet>
                 <title>Projects</title>
             </Helmet>
             <ProjectPageStyles>
-                <MDXRenderer>{data.page.body}</MDXRenderer>
+                <div class="__background">
+                    <MDXRenderer>{data.page.body}</MDXRenderer>
+                </div>
             </ProjectPageStyles>
         </Layout>
     );
