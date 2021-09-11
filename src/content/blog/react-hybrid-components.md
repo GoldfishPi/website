@@ -1,6 +1,6 @@
 ---
 title: React Hybrid Components
-path: "/blog/react-hybrid-components"
+path: react-hybrid-components
 date: Jul 17 2020
 ---
 

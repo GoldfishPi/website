@@ -1,6 +1,6 @@
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { graphql, Page } from 'gatsby';
+import { graphql, Page, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import React, { FC } from 'react';
 import styled from 'styled-components';
@@ -29,6 +29,15 @@ const IndexPage: FC<IndexPageProps> = ({ data }) => {
                         <div className="__text">
                             <MDXRenderer>{data.page.body}</MDXRenderer>
                         </div>
+                        <h2>Blog Posts</h2>
+                        <BlogPosts>
+                        {data.blogPosts.edges.map(({ node }:any) => (
+                            <Link key={node.id} to={`/blog/${node.frontmatter.path}`}>
+                            {node.frontmatter.title}
+                            </Link>
+                            ))}
+                        </BlogPosts>
+                
                     </div>
                 </Styles>
             </Background>
@@ -37,9 +46,16 @@ const IndexPage: FC<IndexPageProps> = ({ data }) => {
 };
 
 const Background = styled.div`
-    background: linear-gradient(335deg, var(--blue) 0%, var(--cyan) 25%, var(--magenta) 100%);
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
+`;
+
+const BlogPosts = styled.div`
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
 `;
 
 const Menu = styled.div`
@@ -88,9 +104,10 @@ export const query = graphql`
         page: mdx(frontmatter: { name: { eq: "about" } }) {
             body
         }
-        blogPosts: allMdx(filter: { frontmatter: { path: { regex: "/blog/" } } }) {
+        blogPosts: allMdx(filter: {fileAbsolutePath: {regex: "/blog/"}}) {
             edges {
                 node {
+                    id
                     frontmatter {
                         date
                         title
