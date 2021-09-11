@@ -2,6 +2,8 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { Link } from 'gatsby';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 interface SidebarProps {}
 
@@ -13,9 +15,9 @@ const iconSize = '3x';
 const Sidebar: FC<SidebarProps> = () => {
     return (
         <Nav>
-            <div className="__logo">
-                <p>EB</p>
-            </div>
+            <Link to="/">
+                <FontAwesomeIcon icon={faHome} size={iconSize} />
+            </Link>
             <div className="__links">
                 <a href="https://github.com/GoldfishPi" target="_blank" rel="noreferrer">
                     <FontAwesomeIcon icon={faGithub} size={iconSize} />
