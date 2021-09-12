@@ -110,6 +110,7 @@ module.exports = {
                         resolve: `gatsby-remark-highlight-code`,
                         options: {
                             theme: 'one-dark',
+                            terminal: 'none',
                         },
                     },
                 ],

@@ -20,6 +20,10 @@ interface BlogPostProps {
 
 const Styles = styled.div`
     flex-grow: 1;
+    --deckgo-highlight-code-background: var(--background);
+    --deckgo-highlight-code-padding: var(--padding-10);
+    --deckgo-highlight-code-border-radius: var(--corner);
+    --deckgo-highlight-code-font-size: 1.2rem;
     .__layout {
         display: grid;
         // grid-template-columns: 1fr 3fr 1fr;
@@ -45,6 +49,9 @@ const Styles = styled.div`
             background: var(--black);
             padding: 0 var(--padding-05);
             border-radius: var(--corner);
+        }
+        .deckgo-highlight-code-container {
+            font-size: 1.4rem;
         }
     }
 
