@@ -1,10 +1,10 @@
 ---
-title: One day build, Dolarvis
-path: one-day-build-dolarvis
+title: One day build, Dollarviz
+path: one-day-build-dollarviz
 date: Sep 12 2021
 ---
 
-## What is dolarvis?
+## What is dolarviz?
 This labor day I had a little time to myself (and some soreness from hiking the previous days) So I decided to build out a simple app I had in my head. Dollar vis, as it would soon be named, would take in the current amount of money you are thinking about spending and show how much that money would be worth by the time you were 60 accounting for compound interest. Apart from just showing the final amount I also wanted to create a line chart that would show the amount of money you would be accumulating over time.
 
 With these pretty simple requirements I decided to set a mini goal to get this done in a day and got to work.
@@ -16,18 +16,18 @@ I've really enjoyed working with gradients recently, they bring a nice natural l
 
 With the inputs sorted I mocked up a quick layout of the page to see where everything looked on the page.
 
-![First Draft](../../../images/dollarvis/proto-1.png) 
+![First Draft](../../../images/dollarviz/proto-1.png) 
 
 I didn't hate the first layout but wanted to do a few more and pick from my favorites.
 
-![Second Draft](../../../images/dollarvis/proto-2.png) 
-![Third Draft](../../../images/dollarvis/proto-3.png) 
-![Fourth Draft](../../../images/dollarvis/proto-4.png) 
+![Second Draft](../../../images/dollarviz/proto-2.png) 
+![Third Draft](../../../images/dollarviz/proto-3.png) 
+![Fourth Draft](../../../images/dollarviz/proto-4.png) 
 
 I wasn't madly in love with any of them, but the last one was good enough for an initial prototype. If I was doing this for a client and this was the final design iteration this would be the point where I would to a mobile iteration, but since this was a personal project I decided to just target desktop and then add a little mobile support if I had time.
 
 ## Setting up the project
-I threw some lunch into the oven and decided to set up all the bureaucracy for the app while it was cooking. First I looked around on [namecheap](https://namecheap.com) for a domain, this is putting the cart before the horse a bit but I really didn't want to have to go through renaming all my project files twice on such a time crunch. After a bit of poking around the domain [dolarvis.com](https://dollarvis.com) for pretty cheap so I picked it up. I set up a [github repo](https://github.com/GoldfishPi/dollarvis) and linked it up with netlify.
+I threw some lunch into the oven and decided to set up all the bureaucracy for the app while it was cooking. First I looked around on [namecheap](https://namecheap.com) for a domain, this is putting the cart before the horse a bit but I really didn't want to have to go through renaming all my project files twice on such a time crunch. After a bit of poking around the domain [dolarviz.com](https://dollarviz.com) for pretty cheap so I picked it up. I set up a [github repo](https://github.com/GoldfishPi/dollarvis) and linked it up with netlify.
 
 Finally it was time to pick a framework. I was thinking this was going to be a static site so I was leaning towards gatsby. I thought briefly about using svelte for this project but since I had never done any graphing in svelte and I've done quite a bit of data visualization in react it seemed like a better idea for the time crunch. My end bundle size would have definitely been smaller if I went for svelte but I know I would have spent half the time messing around with tooling and reading the docks, so it wasn't a good fit for the project.
 
@@ -146,7 +146,7 @@ const { trend, total } = React.useMemo(() => {
     return { trend, total }
 }, [age, principal, end, interestRate])
 ```
-The rest of it's just rendering which I won't go through here but you can check out in the [github repo](https://github.com/GoldfishPi/dollarvis) .
+The rest of it's just rendering which I won't go through here but you can check out in the [github repo](https://github.com/GoldfishPi/dollarviz) .
 
 ## Final thoughts
 This project was a lot of fun to make and pretty simple too. There's something strangely addictive about wrighting data visualization in react that makes the whole process really enjoyable.
