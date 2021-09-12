@@ -62,7 +62,7 @@ I created a simple layout with css grid and put in the placeholder text directly
 
 I quickly styed made a text input component with `styled-components`.
 
-```ts
+```typescript
 const Input = styled.input`
   background: none;
   border: none;
@@ -82,7 +82,7 @@ I've created graphs like this a few times, it's a pretty standard line chat with
 ### Area
 The part of the graph that is shaded is an path just like the line is, however we use the `d3.area` generator, which works a bit different.
 
-```ts
+```typescript
   const a = area()
     .y0(graphHeight)
     .y1((d) => y(d[1]))
@@ -93,13 +93,13 @@ I set `y0` to be `graphHeight` since I want it to go along the base of the chart
 
 Finally to use the area just add a `<path/>` tag widh `d` set to our area `a`.
 
-```ts
+```jsx
 <path d={a} />
 ```
 
 This well create a solid area, but im my design I added a gradient that went from the top of the are down. This is pretty easy to do in svg you just need to know how.
 
-```ts
+```jsx
 <defs>
   <linearGradient id="gradient" y2={0} x1={1} x2={1} y1={1}>
     <stop offset="0%" stopColor="rgba(0,0,0,0)" />
@@ -112,27 +112,27 @@ This well create a solid area, but im my design I added a gradient that went fro
 ## Putting it all together
 Finally it was time to implement some functionality. To start with the base compound interest helper function.
 
-```ts
+```typescript
 const calculateCompoundInterest = (p: number, interestRate: number, time: number) => Math.round(p * (1 + interestRate) ** time)
 ```
 
 Then I needed to wire up a few peices of state for my inputs.
 
-```ts
+```typescript
 const [age, setAge] = React.useState<number>()
 const [principal, setPrincipal] = React.useState<number>()
 ```
 
 I also added some state hooks for interest and my end date since I was going to need them as constants anyway.
 
-```ts
+```typescript
 const [end] = React.useState(60)
 const [interestRate] = React.useState(0.07)
 ```
 
 Now I can calculate the final amount and the trend using a `useMemo` hook.
 
-```ts
+```typescript
 const { trend, total } = React.useMemo(() => {
     if (!principal || !age) return { trend:[], total: 0};
     const total calculateCompoundInterest(principal, interestRate, end - age)
