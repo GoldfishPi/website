@@ -34,6 +34,17 @@ const Styles = styled.div`
         p {
             font-size: 1.3rem;
             margin-bottom: var(--padding-20);
+            line-height: 1.75;
+        }
+
+        h1,h2,h3,h4,h5,h6 {
+            margin-bottom: var(--padding-20);
+        }
+        code {
+            color: var(--red);
+            background: var(--black);
+            padding: 0 var(--padding-05);
+            border-radius: var(--corner);
         }
     }
 
