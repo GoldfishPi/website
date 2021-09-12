@@ -82,7 +82,7 @@ I've created graphs like this a few times, it's a pretty standard line chat with
 ### Area
 The part of the graph that is shaded is an path just like the line is, however we use the `d3.area` generator, which works a bit different.
 
-```tsx
+```ts
   const a = area()
     .y0(graphHeight)
     .y1((d) => y(d[1]))
@@ -93,13 +93,13 @@ I set `y0` to be `graphHeight` since I want it to go along the base of the chart
 
 Finally to use the area just add a `<path/>` tag widh `d` set to our area `a`.
 
-```tsx
+```ts
 <path d={a} />
 ```
 
 This well create a solid area, but im my design I added a gradient that went from the top of the are down. This is pretty easy to do in svg you just need to know how.
 
-```tsx
+```ts
 <defs>
   <linearGradient id="gradient" y2={0} x1={1} x2={1} y1={1}>
     <stop offset="0%" stopColor="rgba(0,0,0,0)" />
