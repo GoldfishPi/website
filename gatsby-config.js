@@ -137,11 +137,14 @@ module.exports = {
             },
         },
         {
-            resolve: `gatsby-plugin-google-analytics`,
+            resolve: `gatsby-plugin-google-gtag`,
             options: {
-                trackingId: 'G-ZHLMGZDHF5',
-                head: false,
-                respectDNT: true,
+                trackingIds: [
+                    "G-ZHLMGZDHF5", // Google Analytics / GA
+                ],
+                pluginConfig: {
+                    head: true,
+                },
             },
         },
         {
