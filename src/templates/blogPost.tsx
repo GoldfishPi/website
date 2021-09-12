@@ -96,11 +96,11 @@ const BlogPost: FC<BlogPostProps> = ({ pageContext }) => {
                 <div className="__layout">
                     <div className="__content">
                         <Card hoverable={false}>
-                            <h1>{pageContext.title}</h1>
-                            <p>{moment(pageContext.date).format('MMMM, DD, yyyy')}</p>
-                            <div
-                                className="__body"
-                                dangerouslySetInnerHTML={{ __html: pageContext.html }}></div>
+                            <div className="__body">
+                                <h1>{pageContext.title}</h1>
+                                <p>{moment(pageContext.date).format('MMMM, DD, yyyy')}</p>
+                                <div dangerouslySetInnerHTML={{ __html: pageContext.html }} />
+                            </div>
                         </Card>
                     </div>
                 </div>
