@@ -53,6 +53,10 @@ const Styles = styled.div`
         .deckgo-highlight-code-container {
             font-size: 1.4rem;
         }
+        .gatsby-resp-image-wrapper {
+            border-radius: var(--corner);
+            margin: var(--padding-10);
+        }
     }
 
     @media screen and (max-width: 800px) {
