@@ -31,13 +31,12 @@ const IndexPage: FC<IndexPageProps> = ({ data }) => {
                         </div>
                         <h2>Blog Posts</h2>
                         <BlogPosts>
-                        {data.blogPosts.edges.map(({ node }:any) => (
-                            <Link key={node.id} to={`/blog/${node.frontmatter.path}`}>
-                            {node.frontmatter.title}
-                            </Link>
+                            {data.blogPosts.edges.map(({ node }: any) => (
+                                <Link key={node.id} to={`/blog/${node.frontmatter.path}`}>
+                                    {node.frontmatter.title}
+                                </Link>
                             ))}
                         </BlogPosts>
-                
                     </div>
                 </Styles>
             </Background>
@@ -104,7 +103,12 @@ export const query = graphql`
         page: mdx(frontmatter: { name: { eq: "about" } }) {
             body
         }
-        blogPosts: allMdx(filter: {fileAbsolutePath: {regex: "/blog/"}}) {
+        blogPosts: allMdx(
+            filter: {
+                fileAbsolutePath: { regex: "/blog/" }
+                frontmatter: { hidden: { nin: true }  }
+            }
+        ) {
             edges {
                 node {
                     id
