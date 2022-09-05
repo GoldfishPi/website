@@ -26,7 +26,7 @@ const Styles = styled.div`
     --deckgo-highlight-code-font-size: 1.2rem;
     .__layout {
         display: grid;
-        // grid-template-columns: 1fr 3fr 1fr;
+        grid-template-columns: 1fr 3fr 1fr;
     }
     .__content {
         grid-column: 2;
