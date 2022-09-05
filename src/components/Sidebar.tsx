@@ -7,7 +7,7 @@ import { faHome, faHammer } from '@fortawesome/free-solid-svg-icons';
 
 interface SidebarProps {}
 
-const iconSize = '3x';
+const iconSize = '2x';
 
 /**
  * @description Sidebar Component
@@ -15,13 +15,13 @@ const iconSize = '3x';
 const Sidebar: FC<SidebarProps> = () => {
     return (
         <Nav>
-        <div>
-            <Link to="/">
-                <FontAwesomeIcon icon={faHome} size={iconSize} />
-            </Link>
-            <Link to="/projects">
-                <FontAwesomeIcon icon={faHammer} size={iconSize} />
-            </Link>
+            <div>
+                <Link to="/">
+                    <FontAwesomeIcon icon={faHome} size={iconSize} />
+                </Link>
+                <Link to="/projects">
+                    <FontAwesomeIcon icon={faHammer} size={iconSize} />
+                </Link>
             </div>
             <div className="__links">
                 <a href="https://github.com/GoldfishPi" target="_blank" rel="noreferrer">
