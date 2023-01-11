@@ -27,7 +27,7 @@
     "gatsby-remark-highlight-code": "^1.4.7",
     "gatsby-remark-images": "^3.11.1",
     "gatsby-remark-responsive-iframe": "^2.11.0",
-    "gatsby-transformer-remark": "^2.16.1",
+    "gatsby-transformer-remark": "^5.25.1",
     "moment": "^2.29.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
